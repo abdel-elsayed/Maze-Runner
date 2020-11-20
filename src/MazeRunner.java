@@ -20,7 +20,7 @@ public class MazeRunner extends Application
 
         maze m = new maze1(10,10);
 
-
+        //TESTING IF PUSHED TO GIT REPO
 
         //Setting the margin to the nodes
         //vBox.setMargin(welcome, new Insets(20, 20, 20, 20));
