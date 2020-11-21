@@ -5,8 +5,6 @@ public abstract class maze implements board{
         private int length;
 
         public maze( int width, int length) {
-
-
             this.width = width;
             this.length = length;
         }

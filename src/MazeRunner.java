@@ -1,5 +1,10 @@
 //package application;
 import javafx.application.Application;
+import javafx.event.EventHandler;
+import javafx.scene.input.KeyCode;
+import javafx.scene.input.KeyEvent;
+import javafx.scene.layout.GridPane;
+import javafx.scene.layout.Pane;
 import javafx.stage.Stage;
 import javafx.scene.Scene;
 import javafx.scene.layout.BorderPane;
@@ -18,27 +23,23 @@ public class MazeRunner extends Application
     public void start(Stage primaryStage)
     {
 
-        maze m = new maze1(10,10);
+        maze1 m = new maze1(10,10);
 
 
-
-        //Setting the margin to the nodes
-        //vBox.setMargin(welcome, new Insets(20, 20, 20, 20));
-        //  vBox.setMargin(playButton, new Insets(20, 20, 20, 20));
-        //   vBox.setMargin(stopButton, new Insets(20, 20, 20, 20));
-        BorderPane borderPane = new BorderPane();
+        Pane mapGrid = m.createBoard();
 
 
-        borderPane.setCenter(m.createBoard());
-        //borderPane.setRight(vBox);
-
-        Scene scene = new Scene(borderPane);
-
-
+        Scene scene = new Scene(mapGrid);
+        scene.setOnKeyPressed(new EventHandler<KeyEvent>() {
+            @Override
+            public void handle(KeyEvent event) {
+                if (event.getCode() == KeyCode.UP) {
+                    System.out.println("ho");
+                }
+            }
+        });
         primaryStage.setTitle("Maze Runner");
         primaryStage.setScene(scene);
         primaryStage.show();
-
-
     }
 }
