@@ -25,8 +25,24 @@ public class MazeRunner extends Application
 
         maze1 m = new maze1(10,10);
 
+<<<<<<< HEAD
 
         Pane mapGrid = m.createBoard();
+=======
+        //TESTING IF PUSHED TO GIT REPO
+
+        //Setting the margin to the nodes
+        //vBox.setMargin(welcome, new Insets(20, 20, 20, 20));
+        //  vBox.setMargin(playButton, new Insets(20, 20, 20, 20));
+        //   vBox.setMargin(stopButton, new Insets(20, 20, 20, 20));
+        BorderPane borderPane = new BorderPane();
+
+
+        borderPane.setCenter(m.createBoard());
+        //borderPane.setRight(vBox);
+
+        Scene scene = new Scene(borderPane);
+>>>>>>> 073010fbbe3276dfa876ef61e8e4ab3a8ba6f878
 
 
         Scene scene = new Scene(mapGrid);
