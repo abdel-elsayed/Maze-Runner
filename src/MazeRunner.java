@@ -3,8 +3,11 @@ import javafx.application.Application;
 import javafx.event.EventHandler;
 import javafx.scene.input.KeyCode;
 import javafx.scene.input.KeyEvent;
-import javafx.scene.layout.GridPane;
+//import javafx.scene.layout.GridPane;
+import javafx.scene.layout.StackPane;
 import javafx.scene.layout.Pane;
+import javafx.scene.paint.Color;
+import javafx.scene.shape.Rectangle;
 import javafx.stage.Stage;
 import javafx.scene.Scene;
 import javafx.scene.layout.BorderPane;
@@ -20,15 +23,14 @@ public class MazeRunner extends Application
     }
 
     @Override
-    public void start(Stage primaryStage)
-    {
+    public void start(Stage primaryStage) {
 
         maze1 m = new maze1(10,10);
 
-<<<<<<< HEAD
+
 
         Pane mapGrid = m.createBoard();
-=======
+
         //TESTING IF PUSHED TO GIT REPO
 
         //Setting the margin to the nodes
@@ -41,11 +43,15 @@ public class MazeRunner extends Application
         borderPane.setCenter(m.createBoard());
         //borderPane.setRight(vBox);
 
-        Scene scene = new Scene(borderPane);
->>>>>>> 073010fbbe3276dfa876ef61e8e4ab3a8ba6f878
+        //Creating a Stackpane
+        StackPane stackPane = new StackPane();
+        stackPane.getChildren().addAll(new Rectangle(700,550, Color.WHITE), borderPane);
 
 
-        Scene scene = new Scene(mapGrid);
+        Scene scene = new Scene(stackPane);
+
+
+        ///Scene scene = new Scene(mapGrid);
         scene.setOnKeyPressed(new EventHandler<KeyEvent>() {
             @Override
             public void handle(KeyEvent event) {
