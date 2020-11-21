@@ -25,10 +25,10 @@ public class MazeRunner extends Application
 
         maze1 m = new maze1(10,10);
 
-<<<<<<< HEAD
+
 
         Pane mapGrid = m.createBoard();
-=======
+
         //TESTING IF PUSHED TO GIT REPO
 
         //Setting the margin to the nodes
@@ -42,10 +42,10 @@ public class MazeRunner extends Application
         //borderPane.setRight(vBox);
 
         Scene scene = new Scene(borderPane);
->>>>>>> 073010fbbe3276dfa876ef61e8e4ab3a8ba6f878
 
 
-        Scene scene = new Scene(mapGrid);
+
+        ///Scene scene = new Scene(mapGrid);
         scene.setOnKeyPressed(new EventHandler<KeyEvent>() {
             @Override
             public void handle(KeyEvent event) {
