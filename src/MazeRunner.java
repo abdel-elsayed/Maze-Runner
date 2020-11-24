@@ -43,7 +43,7 @@ public class MazeRunner extends Application
     boolean running, goNorth, goSouth, goEast, goWest;
     double x = 50;
     double y = 50;
-    double radius = 10;
+    double radius = 20;
     Circle hero = new Circle(x, y, radius);
 
 
@@ -51,56 +51,60 @@ public class MazeRunner extends Application
     @Override
     public void start(Stage primaryStage) {
 
-        maze1 m = new maze1(600,400);
-        moveHeroTo(100, 85);
+        maze1 m = new maze1(600, 400);
+        //moveHeroTo(100, 85);
 
         Group root = new Group();
         root.getChildren().addAll(m.createBoard(), hero);
 
         Scene scene = new Scene(root);
-        System.out.println((int)x);
+        System.out.println((int) x);
         scene.setOnKeyPressed(new EventHandler<KeyEvent>() {
             @Override
             public void handle(KeyEvent event) {
                 switch (event.getCode()) {
                     case UP:
                         //double checkPosition1 = y - 10;
-                        System.out.println("looking up: " + data[(int)x/30][((int)y/30)+1]);
-                        if( data[(int)x/30][((int)y/30) + 1] == 0 ){
-                            y -=10;
-                            System.out.println(x);
-                            System.out.println(y);
+
+                        System.out.println("your index was in the array: " + (int) y / 50 + ' ' + ((int) x / 50));
+                        System.out.println("looking up in the array: " + ((int) y / 50 - 1) + ' ' + (((int) x / 50)));
+                        System.out.println("looking up: " + data[((int) y / 50)][((int) x / 50 - 1)]);
+                        if (data[((int) y / 50) - 1][((int) x / 50)] == 0) {
+                            y -= 30;
+                            System.out.println("X coordinate: " + x);
+                            System.out.println("Y coordinate: " + y);
                             hero.relocate(x, y);
                         }
+                        System.out.println("your index now in the array: " + (int) x / 50 + ' ' + ((int) y / 50));
                         break;
                     case DOWN:
                         //double checkPosition2 = y + 10;
 
-                        System.out.println("looking down: " + data[(int)x/30][((int)y/30)-1]);
-                        if( data[(int)x/30][((int)y/30) - 1] == 0 ){
-                            y +=10;
-                            System.out.println(x);
-                            System.out.println(y);
+                        // System.out.println("looking down: " + data[(int)x/30][((int)y/30)-1]);
+                        if (data[(int) y / 50 + 1][((int) x / 50)] == 0) {
+                            y += 30;
+                            System.out.println("X coordinate: " + x);
+                            System.out.println("Y coordinate: " + y);
                             hero.relocate(x, y);
                         }
                         break;
                     case LEFT:
                         //double checkPosition3 = x  - 10;
-                        System.out.println("looking Left: " + data[((int)x/30) - 1][(int)y/30]);
-                        if( data[(int)x/30 - 1][(int)y/30] == 0) {
-                            x -= 10;
-                            System.out.println(x);
-                            System.out.println(y);
+                        //System.out.println("looking Left: " + data[((int)x/30) - 1][(int)y/30]);
+                        if (data[(int) y / 50][(int) x / 50 - 1] == 0) {
+                            x -= 30;
+                            System.out.println("X coordinate: " + x);
+                            System.out.println("Y coordinate: " + y);
                             hero.relocate(x, y);
                         }
                         break;
                     case RIGHT:
-                       // double checkPosition4 = x  + 10;
-                        System.out.println("looking right: " + data[((int)x/30) + 1][(int)y/30]);
-                        if( data[(int)x/30 + 1][(int)y/30] == 0 ) {
-                            x += 10;
-                            System.out.println(x);
-                            System.out.println(y);
+                        // double checkPosition4 = x  + 10;
+                        // System.out.println("looking right: " + data[((int)x/30) + 1][(int)y/30]);
+                        if (data[(int) y / 50][(int) x / 50 + 1] == 0) {
+                            x += 30;
+                            System.out.println("X coordinate: " + x);
+                            System.out.println("Y coordinate: " + y);
                             hero.relocate(x, y);
                         }
                         break;
@@ -128,7 +132,8 @@ public class MazeRunner extends Application
         primaryStage.setTitle("Maze Runner");
         primaryStage.setScene(scene);
         primaryStage.show();
-        AnimationTimer timer = new AnimationTimer() {
+
+       AnimationTimer timer = new AnimationTimer() {
             @Override
             public void handle(long now) {
                 int dx = 0, dy = 0;
@@ -146,13 +151,13 @@ public class MazeRunner extends Application
     }
     private void moveHeroBy(int dx, int dy) {
         if (dx == 0 && dy == 0) return;
-        /*
+
         final double cx = hero.getBoundsInLocal().getWidth() ;
         final double cy = hero.getBoundsInLocal().getHeight();
 
         double x = cx + hero.getLayoutX() + dx;
         double y = cy + hero.getLayoutY() + dy;
-        */
+
         moveHeroTo(1, 1);
     }
 
