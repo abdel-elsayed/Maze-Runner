@@ -2,6 +2,7 @@
 import javafx.animation.AnimationTimer;
 import javafx.application.Application;
 import javafx.event.EventHandler;
+import javafx.geometry.Rectangle2D;
 import javafx.scene.Group;
 import javafx.scene.Node;
 import javafx.scene.input.KeyCode;
@@ -24,35 +25,38 @@ import java.lang.Math;
 public class MazeRunner extends Application
 {
     private  int [][] data =
-                    { {1,1,1,1,1,1,1,1,1,1,1,1,1,1}
-                    , {1,0,1,0,1,0,1,0,1,0,0,0,0,1}
-                    , {1,0,1,0,0,0,1,0,1,0,1,1,1,1}
-                    , {1,0,0,0,1,1,1,0,0,0,0,0,0,1}
-                    , {1,0,1,0,0,0,0,0,1,1,1,1,0,1}
-                    , {1,0,1,0,1,0,1,0,1,0,1,0,0,1}
-                    , {1,0,1,0,1,1,1,0,1,0,0,0,1,1}
-                    , {1,0,0,0,0,1,0,0,1,0,1,0,0,0}
-                    , {1,0,1,1,0,1,0,0,1,1,1,0,0,1}
-                    , {1,0,0,1,0,1,1,0,0,0,0,0,0,1}
-                    , {1,1,1,1,1,1,1,1,1,1,1,1,1,1}
+            {                //14
+                    {1,1,1,1,1,1,1,1,1,1,1,1,1,1}//1
+                    , {1,0,1,0,0,0,0,0,0,1,0,0,0,1}//2
+                    , {1,0,1,1,1,0,1,0,1,1,1,1,0,1}//3
+                    , {1,0,1,0,1,1,1,0,0,0,0,1,0,1}//4
+                    , {1,0,0,0,1,0,0,0,1,1,1,1,0,1}//5
+                    , {1,1,1,0,1,0,1,0,0,0,0,0,0,0}//6
+                    , {1,0,0,0,1,0,1,0,1,1,1,1,0,1}//7
+                    , {1,0,1,0,0,0,0,0,1,0,0,1,0,1}//8
+                    , {1,0,1,1,1,1,1,0,1,0,1,1,0,1}//9
+                    , {1,0,0,0,0,0,1,0,1,0,0,0,0,1}//10
+                    , {1,1,1,1,1,1,1,1,1,1,1,1,1,1}//11
             };
 
-    public static final double TILE_SIZE = 50;
+   // tile = 154;
+    public static final double TILE_SIZE = 100;
     int start = 450;
-    private static final double W = 600, H = 400;
+    private static final double W = 1400, H = 1100;
     boolean running, goNorth, goSouth, goEast, goWest;
-    double x = 50;
-    double y = 50;
-    double radius = 20;
-    Circle hero = new Circle(x, y, radius);
+    double x = 100;
+    double y = 100;
+    double radius = 50;
+
+    Rectangle hero = new Rectangle(x, y);
 
 
 
     @Override
     public void start(Stage primaryStage) {
 
-        maze1 m = new maze1(600, 400);
-        //moveHeroTo(100, 85);
+        maze1 m = new maze1(1400, 1100);
+        moveHeroTo(200, 200);
 
         Group root = new Group();
         root.getChildren().addAll(m.createBoard(), hero);
@@ -66,23 +70,23 @@ public class MazeRunner extends Application
                     case UP:
                         //double checkPosition1 = y - 10;
 
-                        System.out.println("your index was in the array: " + (int) y / 50 + ' ' + ((int) x / 50));
-                        System.out.println("looking up in the array: " + ((int) y / 50 - 1) + ' ' + (((int) x / 50)));
-                        System.out.println("looking up: " + data[((int) y / 50)][((int) x / 50 - 1)]);
-                        if (data[((int) y / 50) - 1][((int) x / 50)] == 0) {
-                            y -= 30;
+//                        System.out.println("your index was in the array: " + (int) y / 50 + ' ' + ((int) x / 50));
+//                        System.out.println("looking up in the array: " + ((int) y / 50 - 1) + ' ' + (((int) x / 50)));
+//                        System.out.println("looking up: " + data[((int) y / 50)][((int) x / 50 - 1)]);
+                        if (data[((int) y / 100) - 1][((int) x / 100)] == 0) {
+                            y -= 100;
                             System.out.println("X coordinate: " + x);
                             System.out.println("Y coordinate: " + y);
                             hero.relocate(x, y);
                         }
-                        System.out.println("your index now in the array: " + (int) x / 50 + ' ' + ((int) y / 50));
+//                        System.out.println("your index now in the array: " + (int) x / 50 + ' ' + ((int) y / 50));
                         break;
                     case DOWN:
                         //double checkPosition2 = y + 10;
 
                         // System.out.println("looking down: " + data[(int)x/30][((int)y/30)-1]);
-                        if (data[(int) y / 50 + 1][((int) x / 50)] == 0) {
-                            y += 30;
+                        if (data[(int) y / 100 + 1][((int) x / 100)] == 0) {
+                            y += 100;
                             System.out.println("X coordinate: " + x);
                             System.out.println("Y coordinate: " + y);
                             hero.relocate(x, y);
@@ -91,8 +95,8 @@ public class MazeRunner extends Application
                     case LEFT:
                         //double checkPosition3 = x  - 10;
                         //System.out.println("looking Left: " + data[((int)x/30) - 1][(int)y/30]);
-                        if (data[(int) y / 50][(int) x / 50 - 1] == 0) {
-                            x -= 30;
+                        if (data[(int) y / 100][(int) x / 100 - 1] == 0) {
+                            x -= 100;
                             System.out.println("X coordinate: " + x);
                             System.out.println("Y coordinate: " + y);
                             hero.relocate(x, y);
@@ -101,8 +105,8 @@ public class MazeRunner extends Application
                     case RIGHT:
                         // double checkPosition4 = x  + 10;
                         // System.out.println("looking right: " + data[((int)x/30) + 1][(int)y/30]);
-                        if (data[(int) y / 50][(int) x / 50 + 1] == 0) {
-                            x += 30;
+                        if (data[(int) y / 100][(int) x / 100 + 1] == 0) {
+                            x += 100;
                             System.out.println("X coordinate: " + x);
                             System.out.println("Y coordinate: " + y);
                             hero.relocate(x, y);
@@ -178,3 +182,4 @@ public class MazeRunner extends Application
         launch(args);
     }
 }
+
