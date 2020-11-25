@@ -1,39 +1,24 @@
 import javafx.scene.paint.Color;
 
+/**
+ * this class craetes the user character and extends the character class
+ * NOTE: NOT USED YET IN MAIN
+ */
 public class userPlayer extends Character {
-    private int row;
-    private int col;
 
-
-    public userPlayer(int r, int c){
-        row = r;
-        col = c;
-        setFill(Color.valueOf("#6495ED"));
-    };
-
-    public int getRow(){
-        return row;
-    }
-    public int getCol(){
-        return col;
-    }
-
-    public void setRow(int r){
-        row = r;
-    }
-    public void setCol(int c){
-        col = c;
+    double X,Y;
+    // constructor
+    public userPlayer(int x, int y){
+        super(x,y);
+        setWidth(50);
+        setHeight(50);
+        X = x;
+        Y = y;
+        setX(X);
+        setY(Y);
+        setFill(Color.BLACK);
     }
 
 
-    @Override
-    public void move(char dir){
 
-        if (dir == 'u') {
-            System.out.println("am moving upwards");
-            System.out.println(row);
-            System.out.println(col);
-
-        }
-    }
 }

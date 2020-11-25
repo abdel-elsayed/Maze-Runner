@@ -1,47 +1,37 @@
-
 import javafx.scene.paint.Color;
 import javafx.scene.shape.Rectangle;
 
-
 public class tile extends Rectangle {
 
-    boolean isWall;
+    // constructor
+    public tile(int color, int t) {
 
-    public tile(int color) {
-        setWidth(MazeRunner.TILE_SIZE);
-        setHeight(MazeRunner.TILE_SIZE);
+        // setting the dimensions of the tile
+        setWidth((double)t);
+        setHeight((double)t);
 
 
         //Fill tile color
+        //path
         if(color == 0){
             setFill(Color.valueOf("#feb"));
-            isWall = false;
         }
+        //walls
         else if (color == 1) {
             setFill(Color.valueOf("#582"));
-            isWall = true;
         }
+        //maze exit
         else if (color == 2){
             setFill(Color.valueOf("#6495ED"));
-            isWall = false;
         }
+        //monster
         else if (color == 3){
             setFill(Color.valueOf("#FF0000"));
-            isWall = false;
         }
-
-     /*   //Fill tile Character
-        if(character.type == "Player"){
-            setFill(Color.valueOf("#feb"));
-            isWall = false;
+        //tile
+        else if (color == 4){
+            setFill(Color.valueOf("#0000FF"));
         }
-        else if (character.type == "Monster") {
-            setFill(Color.valueOf("#582"));
-            isWall = true;
-        }
-       */
-
-
 
     }
 

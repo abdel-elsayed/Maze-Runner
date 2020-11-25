@@ -1,63 +1,35 @@
-import javafx.scene.Group;
 import javafx.scene.layout.GridPane;
 
 public class maze1 extends maze {
+    // tile size
+    private int TILE_SIZE = 50;
+    //private Rectangle player = new Rectangle(50,50, 50, 50);
 
-        private userPlayer player;
-        private Character computer;
-        private Group tileGroup = new Group();
-        private Group CharacterGroup = new Group();
+    private Character player = new userPlayer(TILE_SIZE,TILE_SIZE);
+    //private Character computer = new computer(50,50);
 
-        public userPlayer getPlayer()
-        {
-          return player;
-        };
-
-        public Character getComputer()
-        {
-            return computer;
-        };
-
-    private  int [][] data =
-            {                //14
-                      {1,1,1,1,1,1,1,1,1,1,1,1,1,1}//1
-                    , {1,0,1,0,0,0,0,0,0,1,0,0,0,1}//2
-                    , {1,0,1,1,1,0,1,0,1,1,1,1,0,1}//3
-                    , {1,0,1,0,1,1,1,0,0,0,0,1,0,1}//4
-                    , {1,0,0,0,1,0,0,0,1,1,1,1,0,1}//5
-                    , {1,1,1,0,1,0,1,0,0,0,0,0,0,0}//6
-                    , {1,0,0,0,1,0,1,0,1,1,1,1,0,1}//7
-                    , {1,0,1,0,0,0,0,0,1,0,0,1,0,1}//8
-                    , {1,0,1,1,1,1,1,0,1,0,1,1,0,1}//9
-                    , {1,0,0,0,0,0,1,0,1,0,0,0,0,1}//10
-                    , {1,1,1,1,1,1,1,1,1,1,1,1,1,1}//11
-            };
-            //
-        public maze1(int width, int length) {
-            super(width, length);
-            // TODO Auto-generated constructor stub
-        }
-
-
-        @Override
-        public GridPane createBoard() {
-
-            GridPane grid = new GridPane();
-            tile tile;
-            int w = data[0].length;
-
-            for (int j = 0; j < w; j++) {
-                for(int i = 0; i < data.length; i++) {
-                    if(data[i][j] == 2){
-                        player = new userPlayer(i,j);
-                        System.out.println(player.getRow());
-                        grid.add(player, j, i);
-                    }else{
-                    tile = new tile(data[i][j]);
-                    grid.add(tile, j, i);
-                    }
-                }
-            }
-            return grid;
-        }
+    // constructor
+    public maze1(){
+      super(700, 550);
     }
+
+    public Character getPlayer(){
+        return player;
+    }
+
+    /*
+    public Character getComputer() {
+        return computer;
+    }*/
+
+    public int getTileSize(){
+        return TILE_SIZE;
+    }
+
+    private GridPane grid = super.initializeLevel("level1.txt", TILE_SIZE);;
+
+    public GridPane getGrid(){
+        return grid;
+    }
+
+}
