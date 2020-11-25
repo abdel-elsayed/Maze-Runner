@@ -1,6 +1,5 @@
-
-import javafx.scene.Parent;
+import javafx.scene.layout.GridPane;
 
 public interface board {
-    public Parent createBoard();
+    public GridPane initializeLevel(String fileName, int tileSize);
 }
