@@ -1,5 +1,7 @@
 import javafx.scene.paint.Color;
 import javafx.scene.shape.Rectangle;
+import javafx.scene.image.Image;
+import javafx.scene.paint.ImagePattern;
 
 public class tile extends Rectangle {
 
@@ -19,6 +21,8 @@ public class tile extends Rectangle {
         //walls
         else if (color == 1) {
             setFill(Color.valueOf("#582"));
+            Image img = new Image("/grass.jpg");
+            setFill(new ImagePattern(img));
         }
         //maze exit
         else if (color == 2){

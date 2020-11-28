@@ -1,4 +1,6 @@
 import javafx.scene.paint.Color;
+import javafx.scene.image.Image;
+import javafx.scene.paint.ImagePattern;
 
 /**
  * this class craetes the user character and extends the character class
@@ -17,6 +19,8 @@ public class userPlayer extends Character {
         setX(X);
         setY(Y);
         setFill(Color.BLACK);
+        Image img = new Image("/player.PNG");
+        setFill(new ImagePattern(img));
     }
 
     public double getPlayerX(){

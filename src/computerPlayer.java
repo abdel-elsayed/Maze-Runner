@@ -1,4 +1,7 @@
+import javafx.scene.image.Image;
 import javafx.scene.paint.Color;
+import javafx.scene.paint.ImagePattern;
+
 import java.util.concurrent.TimeUnit;
 
 public class computerPlayer extends Character {
@@ -14,6 +17,8 @@ public class computerPlayer extends Character {
         setX(X);
         setY(Y);
         setFill(Color.RED);
+        Image img = new Image("/monster.PNG");
+        setFill(new ImagePattern(img));
     }
     public double getPlayerX(){
         return X;
