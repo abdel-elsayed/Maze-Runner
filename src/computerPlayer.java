@@ -1,14 +1,10 @@
 import javafx.scene.paint.Color;
 
-/**
- * this class craetes the user character and extends the character class
- * NOTE: NOT USED YET IN MAIN
- */
-public class userPlayer extends Character {
+public class computerPlayer extends Character {
 
     int X,Y;
     // constructor
-    public userPlayer(int x, int y){
+    public computerPlayer(int x, int y){
         super(x,y);
         setWidth(50);
         setHeight(50);
@@ -16,11 +12,13 @@ public class userPlayer extends Character {
         Y = y;
         setX(X);
         setY(Y);
-        setFill(Color.BLACK);
+        setFill(Color.RED);
     }
+
 
     public void move(int dir, maze m){
 
+        dir = (int)Math.random()*(4-1+1)+1;
         switch (dir){
             case 1:
                 if (m.getDataArray()[Y /50 - 1][X / 50] == 0 ) {

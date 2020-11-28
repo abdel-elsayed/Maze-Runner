@@ -1,9 +1,7 @@
 import javafx.scene.layout.GridPane;
 import java.io.BufferedReader;
-import java.io.File;
 import java.io.FileReader;
 import java.util.Scanner;
-
 /***
  * this is an abstract class that implements the interface board
  */
@@ -24,6 +22,10 @@ public abstract class maze implements board{
          this.length = length;
     }
 
+    // the game characters
+    private Character player;
+    private Character computer;
+
     // accessors & mutators
     public int getWidth() {
             return width;
@@ -37,10 +39,14 @@ public abstract class maze implements board{
     public void setLength(int l) {
             length = l;
         }
+    public Character getPlayer(){  return player;}
+    public Character getComputer() { return computer; }
+    public void setPlayer(Character p){player = p;}
+    public void setComputer(Character c){computer = c;}
+
     public int [][] getDataArray(){
         return data;
     }
-
 
     // the interface methods implemented to create the gridPane for every maze of different level
     // takes the file name for the maze design
@@ -72,8 +78,6 @@ public abstract class maze implements board{
         }
         return grid;
     }
-
-
 }
 
 

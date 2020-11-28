@@ -9,41 +9,14 @@ public abstract class Character extends Rectangle {
     private int X;
     private int Y;
 
+
     public  Character( int x, int y) {
           isWin = false;
           X = x;
           Y = y;
     }
 
-    // moving the character
-    //public abstract void move(char dir, maze m );
-    public void move(int dir, maze m){
+    // abstract method moving the character
+    public abstract void move(int dir, maze m );
 
-        switch (dir){
-            case 1:
-                if (m.getDataArray()[Y /50 - 1][X / 50] == 0 ) {
-                    Y -=  50;
-                    relocate(X, Y);
-                }
-                break;
-            case 2:
-                if (m.getDataArray()[Y / 50 + 1][X / 50] == 0 ) {
-                    Y +=  50;
-                    relocate(X, Y);
-                }
-                break;
-            case 3:
-                if (m.getDataArray()[Y / 50][X / 50 - 1] == 0) {
-                    X -= 50;
-                    relocate(X, Y);
-                }
-                break;
-            case 4:
-                if (m.getDataArray()[Y / 50][X / 50 + 1] == 0) {
-                    X += 50;
-                    relocate(X, Y);
-                }
-                break;
-        }
-    }
 }
