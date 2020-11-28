@@ -11,6 +11,8 @@ import javafx.scene.Scene;
 // The game runner
 public class MazeRunner extends Application
 {
+    //3 game states 0 = running, 1 = win, 2 = lose
+    int isWin = 0;
     int mDir;
     double mX;
     double mY;
@@ -76,6 +78,11 @@ public class MazeRunner extends Application
                         mY = monster.getPlayerY();
                         System.out.println(mX);
                         System.out.println(mY);
+                    }
+                    //Lose condition
+                    if(monster.getPlayerX() == hero.getPlayerX() && monster.getPlayerY() == hero.getPlayerY()) {
+                        isWin = 2;
+                        System.out.println("YOU LOSE");
                     }
 
                 }
