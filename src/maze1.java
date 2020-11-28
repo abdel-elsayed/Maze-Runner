@@ -5,22 +5,17 @@ public class maze1 extends maze {
     private int TILE_SIZE = 50;
     //private Rectangle player = new Rectangle(50,50, 50, 50);
 
-    private Character player = new userPlayer(TILE_SIZE,TILE_SIZE);
-    //private Character computer = new computer(50,50);
+   // private Character player = new userPlayer(50,50);
+    //private Character computer = new computerPlayer(500,50);
+
 
     // constructor
     public maze1(){
       super(700, 550);
+      super.setPlayer(new userPlayer(50,50));
+      super.setComputer(new computerPlayer(500,50));
     }
 
-    public Character getPlayer(){
-        return player;
-    }
-
-    /*
-    public Character getComputer() {
-        return computer;
-    }*/
 
     public int getTileSize(){
         return TILE_SIZE;

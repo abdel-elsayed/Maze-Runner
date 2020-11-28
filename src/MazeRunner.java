@@ -1,7 +1,10 @@
 import javafx.application.Application;
 import javafx.event.EventHandler;
 import javafx.scene.Group;
+import javafx.scene.control.Label;
 import javafx.scene.input.KeyEvent;
+import javafx.scene.layout.HBox;
+import javafx.scene.layout.VBox;
 import javafx.stage.Stage;
 import javafx.scene.Scene;
 
@@ -17,9 +20,19 @@ public class MazeRunner extends Application
         // creating the maze instance
         maze1 m = new maze1();
         Character hero = m.getPlayer();
+        Character monster = m.getComputer();
 
         // adding the maze and the user to the root group
-        root.getChildren().addAll(m.getGrid(), hero );
+        root.getChildren().addAll(m.getGrid(), hero, monster );
+
+
+
+
+        // this is just experimenting with the menu to be on the right of the maze
+        //VBox game = new VBox(root);
+        //VBox menu = new VBox(new Label("hello"));
+        // HBox list = new HBox(10, game, menu);
+
 
         // creating the scene and adding the root group
         Scene scene = new Scene(root);
