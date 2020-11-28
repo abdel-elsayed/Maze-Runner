@@ -19,4 +19,7 @@ public abstract class Character extends Rectangle {
     // abstract method moving the character
     public abstract void move(int dir, maze m );
 
+    public abstract double getPlayerY();
+
+    public abstract double getPlayerX();
 }

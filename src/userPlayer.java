@@ -19,6 +19,13 @@ public class userPlayer extends Character {
         setFill(Color.BLACK);
     }
 
+    public double getPlayerX(){
+        return X;
+    }
+    public double getPlayerY(){
+        return Y;
+    }
+
     public void move(int dir, maze m){
 
         switch (dir){
