@@ -1,10 +1,10 @@
 import javafx.application.Application;
 import javafx.event.EventHandler;
 import javafx.scene.Group;
-import javafx.scene.control.Label;
+import javafx.scene.control.Button;
+import javafx.scene.image.Image;
+import javafx.scene.image.ImageView;
 import javafx.scene.input.KeyEvent;
-import javafx.scene.layout.HBox;
-import javafx.scene.layout.VBox;
 import javafx.stage.Stage;
 import javafx.scene.Scene;
 
@@ -13,98 +13,45 @@ public class MazeRunner extends Application
 {
     //3 game states 0 = running, 1 = win, 2 = lose
     int isWin = 0;
-    int mDir;
-    double mX;
-    double mY;
-    boolean check = true;
-
+    Scene scene1, scene2;
     @Override
     public void start(Stage primaryStage) {
+        // Layout1 (menu screen)
+        Button button1 = new Button("Start");
+        button1.setStyle("-fx-background-color: #F39C12;\n" + "-fx-text-fill: white;\n" + "-fx-padding: 14px 28px;\n"
+        + "-fx-border-radius: 20px;\n" +"-fx-cursor: pointer;\n" );
+        button1.setOnAction(e -> primaryStage.setScene(scene2));
+        button1.setLayoutX(320);
+        button1.setLayoutY(200);
+
+        Image image = new Image("/background1.png");
+        ImageView mv = new ImageView(image);
+        mv.setFitHeight(550);
+        mv.setFitWidth(700);
+
+        Group root1 = new Group();
+        root1.getChildren().addAll(mv, button1);
+        scene1 = new Scene(root1, 700, 550);
+
+        // Layout2 ( the maze )
         // creating a root group
         Group root = new Group();
-
         // creating the maze instance
         maze1 m = new maze1();
         Character hero = m.getPlayer();
         Character monster = m.getComputer();
 
         // adding the maze and the user to the root group
-        root.getChildren().addAll(m.getGrid(), hero, monster );
+        root.getChildren().addAll(m.getGrid(), hero, monster);
 
-
-        //Addition of movement to the Monster
-        Thread thread = new Thread(new Runnable() {
-
-            public void run() {
-                System.out.println("Thread Running");
-                for (int i = 0; i < 10000; i++) {
-                    mDir = (int) (Math.random() * (4 - 1 + 1) + 1);
-                    System.out.println(mDir);
-                    monster.move(mDir, m);
-//                    System.out.println(monster.getPlayerX());
-//                    System.out.println(monster.getPlayerY());
-//
-//                    try {
-//                            Thread.sleep(1000);
-//                        } catch (InterruptedException e) {
-//                            e.printStackTrace();
-//                        }
-                    if (check){
-                        mX = monster.getPlayerX();
-                        mY = monster.getPlayerY();
-                        System.out.println(mX);
-                        System.out.println(mY);
-                        check = false;
-                    }
-
-
-                    //if the position of the monster this round is the same as last move then we skip the pause
-                    if(mX == monster.getPlayerX() && mY == monster.getPlayerY()) {
-                        //copy the monster position
-                        mX = monster.getPlayerX();
-                        mY = monster.getPlayerY();
-                        System.out.println(mX);
-                        System.out.println(mY);
-                        continue;
-                    }
-                    else{
-                        try {
-                            Thread.sleep(200);
-                        } catch (InterruptedException e) {
-                            e.printStackTrace();
-                        }
-                        //copy the monster position
-                        mX = monster.getPlayerX();
-                        mY = monster.getPlayerY();
-                        System.out.println(mX);
-                        System.out.println(mY);
-                    }
-                    //Lose condition
-                    if(monster.getPlayerX() == hero.getPlayerX() && monster.getPlayerY() == hero.getPlayerY()) {
-                        isWin = 2;
-                        System.out.println("YOU LOSE");
-                    }
-
-                }
-                System.out.println("Thread Running");
-            }
-        });
-        thread.start();
-
-
-
-        // this is just experimenting with the menu to be on the right of the maze
-        //VBox game = new VBox(root);
-        //VBox menu = new VBox(new Label("hello"));
-        // HBox list = new HBox(10, game, menu);
-
+        //starts the movements of the monster
+        monster.move(1,m);
 
         // creating the scene and adding the root group
-        Scene scene = new Scene(root);
+        scene2 = new Scene(root);
 
         // moving the user on the grid
-
-        scene.setOnKeyPressed(new EventHandler<KeyEvent>() {
+        scene2.setOnKeyPressed(new EventHandler<KeyEvent>() {
             @Override
             public void handle(KeyEvent event) {
                 switch (event.getCode()) {
@@ -127,7 +74,7 @@ public class MazeRunner extends Application
 
         // setting the scene in the stage and the title
         primaryStage.setTitle("Maze Runner");
-        primaryStage.setScene(scene);
+        primaryStage.setScene(scene1);
         primaryStage.show();
     }
     public static void main(String[] args){

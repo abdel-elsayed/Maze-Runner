@@ -3,11 +3,6 @@ import javafx.scene.layout.GridPane;
 public class maze1 extends maze {
     // tile size
     private int TILE_SIZE = 50;
-    //private Rectangle player = new Rectangle(50,50, 50, 50);
-
-   // private Character player = new userPlayer(50,50);
-    //private Character computer = new computerPlayer(500,50);
-
 
     // constructor
     public maze1(){
@@ -15,7 +10,6 @@ public class maze1 extends maze {
       super.setPlayer(new userPlayer(50,50));
       super.setComputer(new computerPlayer(500,50));
     }
-
 
     public int getTileSize(){
         return TILE_SIZE;
