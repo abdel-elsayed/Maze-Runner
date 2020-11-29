@@ -37,7 +37,7 @@ public class computerPlayer extends Character {
              //System.out.println("Thread Running");
             for (int i = 0; i < 10000; i++) {
                 int dir = (int) (Math.random() * (4 - 1 + 1) + 1);
-                System.out.println(dir);
+                //System.out.println(dir);
 
                 switch (dir) {
                     case 1:
@@ -73,8 +73,8 @@ public class computerPlayer extends Character {
                 if (check){
                     mX = getPlayerX();
                     mY = getPlayerY();
-                    System.out.println(mX);
-                    System.out.println(mY);
+                   // System.out.println(mX);
+                   // System.out.println(mY);
                     check = false;
                 }
 
@@ -84,8 +84,8 @@ public class computerPlayer extends Character {
                     //copy the monster position
                     mX = getPlayerX();
                     mY = getPlayerY();
-                    System.out.println(mX);
-                    System.out.println(mY);
+                    //System.out.println(mX);
+                    //System.out.println(mY);
                     continue;
                 }
                 else{
@@ -97,8 +97,8 @@ public class computerPlayer extends Character {
                     //copy the monster position
                     X = (int)getPlayerX();
                     mY = getPlayerY();
-                    System.out.println(mX);
-                    System.out.println(mY);
+                    //System.out.println(mX);
+                   // System.out.println(mY);
                 }
                 //Lose condition
                 //if(monster.getPlayerX() == hero.getPlayerX() && monster.getPlayerY() == hero.getPlayerY()) {

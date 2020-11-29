@@ -5,9 +5,15 @@ import javafx.scene.shape.Rectangle;
  * NOTE: NOT USED YET IN MAIN
  */
 public abstract class Character extends Rectangle {
+    private String name;
     private boolean isWin;
     private int X;
     private int Y;
+
+    public void setName(String n){
+        name = n;
+    }
+    public String getName(){return name;}
 
 
     public  Character( int x, int y) {

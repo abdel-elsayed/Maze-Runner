@@ -7,7 +7,6 @@ import javafx.scene.paint.ImagePattern;
  * NOTE: NOT USED YET IN MAIN
  */
 public class userPlayer extends Character {
-
     int X,Y;
     // constructor
     public userPlayer(int x, int y){
