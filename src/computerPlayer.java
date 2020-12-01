@@ -1,6 +1,7 @@
 import javafx.scene.image.Image;
 import javafx.scene.paint.Color;
 import javafx.scene.paint.ImagePattern;
+import javafx.stage.Stage;
 
 import java.util.concurrent.TimeUnit;
 
@@ -100,11 +101,13 @@ public class computerPlayer extends Character {
                     //System.out.println(mX);
                    // System.out.println(mY);
                 }
+
                 //Lose condition
-                //if(monster.getPlayerX() == hero.getPlayerX() && monster.getPlayerY() == hero.getPlayerY()) {
+                if(getPlayerX() == m.getPlayer().getPlayerX() && getPlayerY() == m.getPlayer().getPlayerY()) {
                 //    isWin = 2;
-                //    System.out.println("YOU LOSE");
-                //}
+                   System.out.println("YOU LOSE");
+                }
+
 
             }
             // System.out.println("Thread Running");

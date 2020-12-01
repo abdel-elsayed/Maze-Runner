@@ -20,7 +20,7 @@ public class MazeRunner extends Application
     int isWin = 0;
 
     //
-    Scene scene1, scene2;
+    Scene scene1, scene2, scene3;
     @Override
     public void start(Stage primaryStage) {
 
@@ -36,24 +36,43 @@ public class MazeRunner extends Application
         Label label1 = new Label("Name:");
         label1.setFont(new Font("Arial", 18));
         TextField textField = new TextField ();
+
+        // the start button
+        Button button1 = new Button("Start");
+        Button button2 = new Button("Exit");
+
         HBox hb = new HBox();
         hb.getChildren().addAll(label1, textField);
         hb.setSpacing(10);
         hb.setAlignment(Pos.CENTER);
 
-        // the start button
-        Button button1 = new Button("Start");
+        HBox buttons = new HBox();
+        buttons.getChildren().addAll(button1, button2);
+        buttons.setSpacing(10);
+        buttons.setAlignment(Pos.CENTER);
+
         button1.setStyle("-fx-background-color: #F39C12;\n" + "-fx-text-fill: white;\n"
-                + "-fx-padding: 8px 28px;\n");
+                + "-fx-padding: 5px 28px;\n");
+        button2.setStyle("-fx-background-color: #F39C12;\n" + "-fx-text-fill: white;\n"
+                + "-fx-padding: 5px 28px;\n");
+
         button1.setOnAction(e ->
                 {
                     primaryStage.setScene(scene2);
                      m.getPlayer().setName(textField.getText());
                 }
         );
+        button2.setOnAction(e ->
+                {
+                    System.exit(0);
+                }
+        );
+
+
+
 
         // creating the vbox and loading the content to it
-        VBox vbox = new VBox(10, title,hb, button1);
+        VBox vbox = new VBox(10, title , hb , button1);
         vbox.setStyle("-fx-padding: 10;" +
                 "-fx-background-color: #BDB76B;" +
                 "-fx-border-width: 2;" +
@@ -75,22 +94,23 @@ public class MazeRunner extends Application
         //adding the image and the vbox to a group
         Group root1 = new Group();
         root1.getChildren().addAll(mv,vbox);
-        scene1 = new Scene(root1, 700, 550);
+        scene1 = new Scene(root1);
+
 
         // Layout2 ( the maze )
         // creating a root group
-        Group root = new Group();
+        Group root2 = new Group();
         Character hero = m.getPlayer();
         Character monster = m.getComputer();
 
         // adding the maze and the user to the root group
-        root.getChildren().addAll(m.getGrid(), hero, monster);
+        root2.getChildren().addAll(m.getGrid(), hero, monster);
 
         //starts the movements of the monster
         monster.move(1,m);
 
         // creating the scene and adding the root group
-        scene2 = new Scene(root);
+        scene2 = new Scene(root2);
 
         // moving the user on the grid
         scene2.setOnKeyPressed(new EventHandler<KeyEvent>() {
@@ -99,20 +119,53 @@ public class MazeRunner extends Application
                 switch (event.getCode()) {
                     case UP:
                         hero.move(1 , m);
+                        if(m.getPlayer().getPlayerX() == m.winX && m.getPlayer().getPlayerY() == m.winY ){
+                            System.out.println("you won!");
+                        }
                         break;
                     case DOWN:
                         hero.move(2 , m);
-                        break;
+                        if(m.getPlayer().getPlayerX() == m.winX && m.getPlayer().getPlayerY() == m.winY ){
+                            System.out.println("you won!");
+                        }break;
                     case LEFT:
                         hero.move(3 , m);
-                        break;
+                        if(m.getPlayer().getPlayerX() == m.winX && m.getPlayer().getPlayerY() == m.winY ){
+                            System.out.println("you won!");
+                        }break;
                     case RIGHT:
                         hero.move(4, m);
-                        break;
+                        if(m.getPlayer().getPlayerX() == m.winX && m.getPlayer().getPlayerY() == m.winY ){
+                            System.out.println("you won!");
+                        }break;
                 }
 
             }
         });
+
+        // the background image
+        Image image1 = new Image("/gameOver.PNG");
+        ImageView mv1 = new ImageView(image1);
+        mv1.setFitHeight(550);
+        mv1.setFitWidth(700);
+
+        Label status = new Label("game over");
+        VBox vbox2 = new VBox(10,status, buttons);
+        vbox2.setStyle("-fx-padding: 10;" +
+                "-fx-background-color: #BDB76B;" +
+                "-fx-border-width: 2;" +
+                "-fx-border-insets: 5;" +
+                "-fx-border-radius: 5;" +
+                "-fx-border-color:#F0E68C ;");
+        vbox2.setLayoutX(180);
+        vbox2.setLayoutY(300);
+        vbox2.setAlignment(Pos.CENTER);
+        vbox2.setPrefWidth(350);
+        vbox2.setPrefHeight(100);
+        //adding the image and the vbox to a group
+        Group root3 = new Group();
+        root3.getChildren().addAll(mv1,vbox2);
+        scene3 = new Scene(root3, 700, 550);
 
         // setting the scene in the stage and the title
         primaryStage.setTitle("Maze Runner");

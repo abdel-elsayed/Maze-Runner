@@ -2,10 +2,15 @@ import javafx.scene.layout.GridPane;
 import java.io.BufferedReader;
 import java.io.FileReader;
 import java.util.Scanner;
+
 /***
  * this is an abstract class that implements the interface board
  */
+
 public abstract class maze implements board{
+
+    //the x&y coordinates of the win tile
+    int winX, winY;
 
     // the width of the maze
     private int width;
@@ -15,6 +20,7 @@ public abstract class maze implements board{
 
     // holds the maze data in array to be used when moving the user on the grid
     private int [][] data;
+
 
     // constructor
     public maze( int width, int length) {
@@ -68,6 +74,11 @@ public abstract class maze implements board{
                     String[] line = sc.nextLine().trim().split("");
                     for (int j = 0; j < line.length; j++) {
                         data[i][j] = Integer.parseInt(line[j]);
+                        if(data[i][j] == 2)
+                            {
+                            winY = i*tileSize;
+                            winX = j*tileSize;
+                        }
                         tile = new tile(data[i][j], tileSize);
                         grid.add(tile, j, i);
                     }
