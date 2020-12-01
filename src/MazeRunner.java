@@ -19,7 +19,7 @@ public class MazeRunner extends Application
     //3 game states 0 = running, 1 = win, 2 = lose
     int isWin = 0;
 
-    //
+
     Scene scene1, scene2, scene3;
     @Override
     public void start(Stage primaryStage) {
@@ -51,6 +51,7 @@ public class MazeRunner extends Application
         buttons.setSpacing(10);
         buttons.setAlignment(Pos.CENTER);
 
+
         button1.setStyle("-fx-background-color: #F39C12;\n" + "-fx-text-fill: white;\n"
                 + "-fx-padding: 5px 28px;\n");
         button2.setStyle("-fx-background-color: #F39C12;\n" + "-fx-text-fill: white;\n"
@@ -67,8 +68,6 @@ public class MazeRunner extends Application
                     System.exit(0);
                 }
         );
-
-
 
 
         // creating the vbox and loading the content to it
@@ -96,13 +95,13 @@ public class MazeRunner extends Application
         root1.getChildren().addAll(mv,vbox);
         scene1 = new Scene(root1);
 
-
         // Layout2 ( the maze )
         // creating a root group
         Group root2 = new Group();
         Character hero = m.getPlayer();
         Character monster = m.getComputer();
 
+        Label status = new Label();
         // adding the maze and the user to the root group
         root2.getChildren().addAll(m.getGrid(), hero, monster);
 
@@ -121,22 +120,30 @@ public class MazeRunner extends Application
                         hero.move(1 , m);
                         if(m.getPlayer().getPlayerX() == m.winX && m.getPlayer().getPlayerY() == m.winY ){
                             System.out.println("you won!");
+                            status.setText("YOU WON!!!!");
+                            primaryStage.setScene(scene3);
                         }
                         break;
                     case DOWN:
                         hero.move(2 , m);
                         if(m.getPlayer().getPlayerX() == m.winX && m.getPlayer().getPlayerY() == m.winY ){
                             System.out.println("you won!");
+                            status.setText("YOU WON!!!!");
+                            primaryStage.setScene(scene3);
                         }break;
                     case LEFT:
                         hero.move(3 , m);
                         if(m.getPlayer().getPlayerX() == m.winX && m.getPlayer().getPlayerY() == m.winY ){
                             System.out.println("you won!");
+                            status.setText("YOU WON!!!!");
+                            primaryStage.setScene(scene3);
                         }break;
                     case RIGHT:
                         hero.move(4, m);
                         if(m.getPlayer().getPlayerX() == m.winX && m.getPlayer().getPlayerY() == m.winY ){
                             System.out.println("you won!");
+                            status.setText("YOU WON!!!!");
+                            primaryStage.setScene(scene3);
                         }break;
                 }
 
@@ -149,7 +156,7 @@ public class MazeRunner extends Application
         mv1.setFitHeight(550);
         mv1.setFitWidth(700);
 
-        Label status = new Label("game over");
+
         VBox vbox2 = new VBox(10,status, buttons);
         vbox2.setStyle("-fx-padding: 10;" +
                 "-fx-background-color: #BDB76B;" +
