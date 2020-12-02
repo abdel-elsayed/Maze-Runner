@@ -168,6 +168,7 @@ public class MazeRunner extends Application
                         break;
                     case RIGHT:
                         hero.move(4, m);
+                       // System.out.println(m.tele1X);
                         if(m.getPlayer().getPlayerX() == m.winX && m.getPlayer().getPlayerY() == m.winY ){
                             status.setText(" Congratulation!!! " + hero.getName() + "\n YOU WON!!!");
                             vbox2.setStyle(  " -fx-background-color: green;" + "-fx-border-color: green ;");

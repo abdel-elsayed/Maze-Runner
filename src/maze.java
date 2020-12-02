@@ -1,14 +1,12 @@
 import javafx.scene.layout.GridPane;
-import javafx.stage.Stage;
-
 import java.io.BufferedReader;
 import java.io.FileReader;
 import java.util.Scanner;
 
+
 /***
  * this is an abstract class that implements the interface board
  */
-
 public abstract class maze implements board{
 
     //the x&y coordinates of the win tile
@@ -22,6 +20,12 @@ public abstract class maze implements board{
 
     // holds the maze data in array to be used when moving the user on the grid
     private int [][] data;
+
+    //teleporting tiles coordinates
+    public int tele1X;
+    public int tele1Y;
+    public int tele2X;
+    public int tele2Y;
 
 
     // constructor
@@ -59,6 +63,8 @@ public abstract class maze implements board{
         return data;
     }
 
+    public abstract int getTileSize();
+
     // the interface methods implemented to create the gridPane for every maze of different level
     // takes the file name for the maze design
     @Override
@@ -66,7 +72,7 @@ public abstract class maze implements board{
 
         GridPane grid = new GridPane();
         tile tile;
-        String file = "C:\\Users\\warren\\IdeaProjects\\Maze-Runner\\src\\";
+        String file = "..\\MazeRunner\\src\\";
         file += fileName;
         try{
             BufferedReader reader = new BufferedReader(new FileReader(file));
@@ -83,6 +89,14 @@ public abstract class maze implements board{
                             {
                             winY = i*tileSize;
                             winX = j*tileSize;
+                        }else if(data[i][j] == 5)
+                        {
+                            tele1X = j*tileSize;
+                            tele1Y = i*tileSize;
+                        }else if(data[i][j] == 6)
+                        {
+                            tele2X = j*tileSize;
+                            tele2Y = i*tileSize;
                         }
                         tile = new tile(data[i][j], tileSize);
                         grid.add(tile, j, i);

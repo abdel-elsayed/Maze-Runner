@@ -10,8 +10,8 @@ public class computerPlayer extends Character {
     // constructor
     public computerPlayer(int x, int y){
         super(x,y);
-        setWidth(50);
-        setHeight(50);
+        setWidth(40);
+        setHeight(40);
         X = x;
         Y = y;
         setX(X);
@@ -42,26 +42,26 @@ public class computerPlayer extends Character {
                     int dir = (int) (Math.random() * (4 - 1 + 1) + 1);
                     switch (dir) {
                         case 1:
-                            if (m.getDataArray()[Y / 50 - 1][X / 50] == 0) {
-                                Y -= 50;
+                            if (m.getDataArray()[Y / m.getTileSize() - 1][X / m.getTileSize()] == 0) {
+                                Y -= m.getTileSize();
                                 relocate(X, Y);
                             }
                             break;
                         case 2:
-                            if (m.getDataArray()[Y / 50 + 1][X / 50] == 0) {
-                                Y += 50;
+                            if (m.getDataArray()[Y / m.getTileSize() + 1][X / m.getTileSize()] == 0) {
+                                Y += m.getTileSize();
                                 relocate(X, Y);
                             }
                             break;
                         case 3:
-                            if (m.getDataArray()[Y / 50][X / 50 - 1] == 0) {
-                                X -= 50;
+                            if (m.getDataArray()[Y / m.getTileSize()][X / m.getTileSize() - 1] == 0) {
+                                X -= m.getTileSize();
                                 relocate(X, Y);
                             }
                             break;
                         case 4:
-                            if (m.getDataArray()[Y / 50][X / 50 + 1] == 0) {
-                                X += 50;
+                            if (m.getDataArray()[Y / m.getTileSize()][X / m.getTileSize() + 1] == 0) {
+                                X += m.getTileSize();
                                 relocate(X, Y);
                             }
                             break;

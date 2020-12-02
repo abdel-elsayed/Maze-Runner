@@ -10,8 +10,8 @@ public class userPlayer extends Character {
     // constructor
     public userPlayer(int x, int y){
         super(x,y);
-        setWidth(50);
-        setHeight(50);
+        setWidth(40);
+        setHeight(40);
         X = x;
         Y = y;
         setX(X);
@@ -32,26 +32,66 @@ public class userPlayer extends Character {
 
         switch (dir){
             case 1:
-                if (m.getDataArray()[Y /50 - 1][X / 50] == 0 || m.getDataArray()[Y /50 - 1][X / 50] == 2) {
-                    Y -=  50;
+                if (m.getDataArray()[Y /m.getTileSize() - 1][X / m.getTileSize()] == 0 || m.getDataArray()[Y /m.getTileSize() - 1][X / m.getTileSize()] == 2 ||
+                        m.getDataArray()[Y / m.getTileSize() -1 ][X / m.getTileSize()] == 5 || m.getDataArray()[Y / m.getTileSize() -1 ][X / m.getTileSize()] == 6) {
+                    Y -=  m.getTileSize();
+                    relocate(X, Y);
+                }
+                if(m.getPlayer().getPlayerX() == m.tele1X && m.getPlayer().getPlayerY() == m.tele1Y ){
+                    X = m.tele2X + m.getTileSize();
+                    Y = m.tele2Y;
+                    relocate(X, Y);
+                }else if(m.getPlayer().getPlayerX() == m.tele2X && m.getPlayer().getPlayerY() == m.tele2Y ){
+                    X = m.tele1X - m.getTileSize();
+                    Y = m.tele1Y;
                     relocate(X, Y);
                 }
                 break;
             case 2:
-                if (m.getDataArray()[Y / 50 + 1][X / 50] == 0 || m.getDataArray()[Y / 50 + 1][X / 50] == 2) {
-                    Y +=  50;
+                if (m.getDataArray()[Y / m.getTileSize() + 1][X / m.getTileSize()] == 0 || m.getDataArray()[Y / m.getTileSize() + 1][X / m.getTileSize()] == 2 ||
+                        m.getDataArray()[Y / m.getTileSize() +1][X / m.getTileSize() ] == 5 || m.getDataArray()[Y / m.getTileSize() + 1][X / m.getTileSize()] == 6) {
+                    Y +=  m.getTileSize();
+                    relocate(X, Y);
+                }
+                if(m.getPlayer().getPlayerX() == m.tele1X && m.getPlayer().getPlayerY() == m.tele1Y ){
+                    X = m.tele2X + m.getTileSize();
+                    Y = m.tele2Y;
+                    relocate(X, Y);
+                }else if(m.getPlayer().getPlayerX() == m.tele2X && m.getPlayer().getPlayerY() == m.tele2Y ){
+                    X = m.tele1X - m.getTileSize();
+                    Y = m.tele1Y;
                     relocate(X, Y);
                 }
                 break;
             case 3:
-                if (m.getDataArray()[Y / 50][X / 50 - 1] == 0 || m.getDataArray()[Y / 50][X / 50 - 1] == 2) {
-                    X -= 50;
+                if (m.getDataArray()[Y / m.getTileSize()][X / m.getTileSize() - 1] == 0 || m.getDataArray()[Y / m.getTileSize()][X / m.getTileSize() - 1] == 2||
+                        m.getDataArray()[Y / m.getTileSize()][X / m.getTileSize() - 1] == 5 || m.getDataArray()[Y / m.getTileSize()][X / m.getTileSize() - 1] == 6) {
+                    X -= m.getTileSize();
+                    relocate(X, Y);
+                }
+                if(m.getPlayer().getPlayerX() == m.tele1X && m.getPlayer().getPlayerY() == m.tele1Y ){
+                    X = m.tele2X + m.getTileSize();
+                    Y = m.tele2Y;
+                    relocate(X, Y);
+                }else if(m.getPlayer().getPlayerX() == m.tele2X && m.getPlayer().getPlayerY() == m.tele2Y ){
+                    X = m.tele1X - m.getTileSize();
+                    Y = m.tele1Y;
                     relocate(X, Y);
                 }
                 break;
             case 4:
-                if (m.getDataArray()[Y / 50][X / 50 + 1] == 0 || m.getDataArray()[Y / 50][X / 50 + 1] == 2) {
-                    X += 50;
+                if (m.getDataArray()[Y / m.getTileSize()][X / m.getTileSize() + 1] == 0 || m.getDataArray()[Y / m.getTileSize()][X / m.getTileSize() + 1] == 2  ||
+                        m.getDataArray()[Y / m.getTileSize()][X / m.getTileSize() + 1] == 5 || m.getDataArray()[Y / m.getTileSize()][X / m.getTileSize() + 1] == 6) {
+                    X += m.getTileSize();
+                    relocate(X, Y);
+                }
+                if(m.getPlayer().getPlayerX() == m.tele1X && m.getPlayer().getPlayerY() == m.tele1Y ){
+                    X = m.tele2X + m.getTileSize();
+                    Y = m.tele2Y;
+                    relocate(X, Y);
+                }else if(m.getPlayer().getPlayerX() == m.tele2X && m.getPlayer().getPlayerY() == m.tele2Y ){
+                    X = m.tele1X - m.getTileSize();
+                    Y = m.tele1Y;
                     relocate(X, Y);
                 }
                 break;
