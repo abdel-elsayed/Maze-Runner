@@ -10,8 +10,8 @@ public class userPlayer extends Character {
     // constructor
     public userPlayer(int x, int y){
         super(x,y);
-        setWidth(40);
-        setHeight(40);
+        setWidth(30);
+        setHeight(30);
         X = x;
         Y = y;
         setX(X);
