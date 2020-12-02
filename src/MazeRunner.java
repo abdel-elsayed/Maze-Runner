@@ -19,7 +19,7 @@ import java.util.concurrent.atomic.AtomicBoolean;
 // The game runner
 public class MazeRunner extends Application
 {
-    private AtomicBoolean lose = new AtomicBoolean(false);
+    private boolean lose = false;
     //3 game states 0 = running, 1 = win, 2 = lose
     int isWin = 0;
     Scene scene1, scene2, scene3;
@@ -115,8 +115,8 @@ public class MazeRunner extends Application
         //starts the movements of the monster
         Thread thread = new Thread(new Runnable() {
             public void run() {
-                while(lose.get() == false){
                 for (int i = 0; i < 10000; i++) {
+
                     monster.move(1, m, scene3);
 
                     if (check) {
@@ -152,17 +152,16 @@ public class MazeRunner extends Application
                     if (monster.getPlayerX() == m.getPlayer().getPlayerX() && monster.getPlayerY() == m.getPlayer().getPlayerY()) {
                         //    isWin = 2;
                         //    m.getStage().setScene(scene3);
-                        lose.set(true);
+                        //Thread.currentThread().interrupt();
+
                         System.out.println("YOU LOSE");
                     }
                 }
-                }
             }
+
     });
         thread.start();
-        if(lose.get() == true){
-            primaryStage.setScene(scene3);
-        }
+
 
         // creating the scene and adding the root group
         scene2 = new Scene(root2);
