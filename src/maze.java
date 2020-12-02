@@ -66,7 +66,7 @@ public abstract class maze implements board{
 
         GridPane grid = new GridPane();
         tile tile;
-        String file = "..\\MazeRunner\\src\\";
+        String file = "C:\\Users\\warren\\IdeaProjects\\Maze-Runner\\src\\";
         file += fileName;
         try{
             BufferedReader reader = new BufferedReader(new FileReader(file));
