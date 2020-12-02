@@ -178,7 +178,7 @@ public class MazeRunner extends Application
                         System.out.println("YOU LOSE");
                         c.setLose(true);
                         //System.out.println(c.getCounter());
-
+                        break;
                     }
                 }
             }
