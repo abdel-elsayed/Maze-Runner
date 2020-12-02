@@ -36,6 +36,10 @@ public class tile extends Rectangle {
         else if (color == 4){
             setFill(Color.valueOf("#0000FF"));
         }
+        //teleport
+        else if (color == 5){
+            setFill(Color.valueOf("#7F00FF"));
+        }
 
     }
 
