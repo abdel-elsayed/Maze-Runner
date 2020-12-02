@@ -9,26 +9,31 @@ import javafx.scene.image.Image;
 import javafx.scene.image.ImageView;
 import javafx.scene.input.KeyEvent;
 import javafx.scene.layout.*;
+import javafx.scene.paint.Stop;
 import javafx.scene.text.Font;
 import javafx.stage.Stage;
 import javafx.scene.Scene;
 
-import java.util.concurrent.atomic.AtomicBoolean;
 
 
 // The game runner
 public class MazeRunner extends Application
 {
+
+    ThreadLost c = new ThreadLost();
+
     private boolean lose = false;
     //3 game states 0 = running, 1 = win, 2 = lose
     int isWin = 0;
     Scene scene1, scene2, scene3;
     double mX, mY;
     boolean check = true;
+    boolean isLose = true;
 
 
     @Override
     public void start(Stage primaryStage) {
+
 
         // creating the maze instance
         maze1 m = new maze1(primaryStage);
@@ -112,6 +117,12 @@ public class MazeRunner extends Application
         // adding the maze and the user to the root group
         root2.getChildren().addAll(m.getGrid(), hero, monster);
 
+        Thread thread2 = new Thread(new Runnable() {
+            public void run() {
+                m.getStage().setScene(scene3);
+            }});
+
+
         //starts the movements of the monster
         Thread thread = new Thread(new Runnable() {
             public void run() {
@@ -119,12 +130,23 @@ public class MazeRunner extends Application
 
                     monster.move(1, m, scene3);
 
+                    //checking threadlost
+                    //System.out.println(c.getCounter());
+
+                    //only runs first time to set temp variables
                     if (check) {
                         mX = monster.getPlayerX();
                         mY = monster.getPlayerY();
                         // System.out.println(mX);
                         // System.out.println(mY);
                         check = false;
+
+                        //Delay while user types name
+                        try {
+                            Thread.sleep(2000);
+                        } catch (InterruptedException e) {
+                            e.printStackTrace();
+                        }
                     }
 
                     //if the position of the monster this round is the same as last move then we skip the pause
@@ -137,7 +159,7 @@ public class MazeRunner extends Application
                         continue;
                     } else {
                         try {
-                            Thread.sleep(200);
+                            Thread.sleep(150);
                         } catch (InterruptedException e) {
                             e.printStackTrace();
                         }
@@ -153,18 +175,20 @@ public class MazeRunner extends Application
                         //    isWin = 2;
                         //    m.getStage().setScene(scene3);
                         //Thread.currentThread().interrupt();
-
                         System.out.println("YOU LOSE");
+                        c.setLose(true);
+                        //System.out.println(c.getCounter());
+
                     }
                 }
             }
 
-    });
+        });
         thread.start();
-
 
         // creating the scene and adding the root group
         scene2 = new Scene(root2);
+
 
         // moving the user on the grid
         scene2.setOnKeyPressed(new EventHandler<KeyEvent>() {
@@ -178,6 +202,11 @@ public class MazeRunner extends Application
                             status.setText("YOU WON!!!!");
                             primaryStage.setScene(scene3);
                         }
+                        if(c.getLose() == true) {
+                            System.out.println("you lose!");
+                            status.setText("YOU LOST!!!!");
+                            primaryStage.setScene(scene3);
+                        }
                         break;
                     case DOWN:
                         hero.move(2 , m, scene3);
@@ -185,21 +214,43 @@ public class MazeRunner extends Application
                             System.out.println("you won!");
                             status.setText("YOU WON!!!!");
                             primaryStage.setScene(scene3);
-                        }break;
+
+                        }
+                        if(c.getLose() == true) {
+                            System.out.println("you lose!");
+                            status.setText("YOU LOST!!!!");
+                            primaryStage.setScene(scene3);
+                        }
+                        break;
                     case LEFT:
                         hero.move(3 , m, scene3);
                         if(m.getPlayer().getPlayerX() == m.winX && m.getPlayer().getPlayerY() == m.winY ){
                             System.out.println("you won!");
                             status.setText("YOU WON!!!!");
                             primaryStage.setScene(scene3);
-                        }break;
+
+                        }
+                        if(c.getLose() == true) {
+                            System.out.println("you lose!");
+                            status.setText("YOU LOST!!!!");
+                            primaryStage.setScene(scene3);
+                        }
+                        break;
                     case RIGHT:
                         hero.move(4, m, scene3);
                         if(m.getPlayer().getPlayerX() == m.winX && m.getPlayer().getPlayerY() == m.winY ){
                             System.out.println("you won!");
                             status.setText("YOU WON!!!!");
                             primaryStage.setScene(scene3);
-                        }break;
+
+                        }
+                        if(c.getLose() == true) {
+                            System.out.println("you lose!");
+                            status.setText("YOU LOST!!!!");
+                            primaryStage.setScene(scene3);
+                        }
+                        break;
+
                 }
             }
         });
@@ -236,7 +287,6 @@ public class MazeRunner extends Application
     }
     public static void main(String[] args){
         launch(args);
-    }
 
-}
+}}
 
