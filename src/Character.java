@@ -23,8 +23,11 @@ public abstract class Character extends Rectangle {
           Y = y;
     }
 
+    public void setIsWin(boolean w){isWin = w;}
+    public boolean getIsWin(){return isWin;}
+
     // abstract method moving the character
-    public abstract void move(int dir, maze m , Scene s);
+    public abstract void move(int dir, maze m);
 
     public abstract double getPlayerY();
 

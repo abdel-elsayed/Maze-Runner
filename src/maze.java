@@ -23,14 +23,11 @@ public abstract class maze implements board{
     // holds the maze data in array to be used when moving the user on the grid
     private int [][] data;
 
-    //the stage that the maze belongs to
-    private Stage primaryStage;
 
     // constructor
-    public maze( int width, int length, Stage ps) {
+    public maze( int width, int length) {
          this.width = width;
          this.length = length;
-         this.primaryStage = ps;
 
     }
 
@@ -43,10 +40,7 @@ public abstract class maze implements board{
             return width;
         }
 
-    public Stage getStage() {
-        return primaryStage;
-    }
-    public void setStage(Stage p){primaryStage = p;}
+
     public int getLength() {
             return length;
         }
@@ -72,7 +66,7 @@ public abstract class maze implements board{
 
         GridPane grid = new GridPane();
         tile tile;
-        String file = "C:\\Users\\Haysus\\IdeaProjects\\Maze-Runner\\src\\";
+        String file = "..\\MazeRunner\\src\\";
         file += fileName;
         try{
             BufferedReader reader = new BufferedReader(new FileReader(file));

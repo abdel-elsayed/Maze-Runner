@@ -1,11 +1,9 @@
-import javafx.scene.Scene;
 import javafx.scene.paint.Color;
 import javafx.scene.image.Image;
 import javafx.scene.paint.ImagePattern;
 
 /**
- * this class craetes the user character and extends the character class
- * NOTE: NOT USED YET IN MAIN
+ * this class creates the user character and extends the character class
  */
 public class userPlayer extends Character {
     int X,Y;
@@ -30,7 +28,7 @@ public class userPlayer extends Character {
         return Y;
     }
 
-    public void move(int dir, maze m, Scene s){
+    public void move(int dir, maze m){
 
         switch (dir){
             case 1:
