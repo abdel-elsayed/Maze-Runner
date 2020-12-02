@@ -20,7 +20,7 @@ import javafx.scene.Scene;
 public class MazeRunner extends Application
 {
 
-    ThreadLost c = new ThreadLost();
+    //ThreadLost c = new ThreadLost();
 
     private boolean lose = false;
     //3 game states 0 = running, 1 = win, 2 = lose
@@ -28,7 +28,7 @@ public class MazeRunner extends Application
     Scene scene1, scene2, scene3;
     double mX, mY;
     boolean check = true;
-    boolean isLose = true;
+    boolean isLose = false;
 
 
     @Override
@@ -132,6 +132,7 @@ public class MazeRunner extends Application
 
                     //checking threadlost
                     //System.out.println(c.getCounter());
+                    //System.out.println(isLose);
 
                     //only runs first time to set temp variables
                     if (check) {
@@ -176,7 +177,8 @@ public class MazeRunner extends Application
                         //    m.getStage().setScene(scene3);
                         //Thread.currentThread().interrupt();
                         System.out.println("YOU LOSE");
-                        c.setLose(true);
+                        isLose = true;
+                        //c.setLose(true);
                         //System.out.println(c.getCounter());
                         break;
                     }
@@ -202,11 +204,12 @@ public class MazeRunner extends Application
                             status.setText("YOU WON!!!!");
                             primaryStage.setScene(scene3);
                         }
-                        if(c.getLose() == true) {
+                        if(isLose == true) {
                             System.out.println("you lose!");
                             status.setText("YOU LOST!!!!");
                             primaryStage.setScene(scene3);
                         }
+                        System.out.println(isLose);
                         break;
                     case DOWN:
                         hero.move(2 , m, scene3);
@@ -216,11 +219,12 @@ public class MazeRunner extends Application
                             primaryStage.setScene(scene3);
 
                         }
-                        if(c.getLose() == true) {
+                        if(isLose == true) {
                             System.out.println("you lose!");
                             status.setText("YOU LOST!!!!");
                             primaryStage.setScene(scene3);
                         }
+                        System.out.println(isLose);
                         break;
                     case LEFT:
                         hero.move(3 , m, scene3);
@@ -230,11 +234,12 @@ public class MazeRunner extends Application
                             primaryStage.setScene(scene3);
 
                         }
-                        if(c.getLose() == true) {
+                        if(isLose == true) {
                             System.out.println("you lose!");
                             status.setText("YOU LOST!!!!");
                             primaryStage.setScene(scene3);
                         }
+                        System.out.println(isLose);
                         break;
                     case RIGHT:
                         hero.move(4, m, scene3);
@@ -244,11 +249,12 @@ public class MazeRunner extends Application
                             primaryStage.setScene(scene3);
 
                         }
-                        if(c.getLose() == true) {
+                        if(isLose == true) {
                             System.out.println("you lose!");
                             status.setText("YOU LOST!!!!");
                             primaryStage.setScene(scene3);
                         }
+                        System.out.println(isLose);
                         break;
 
                 }
