@@ -13,19 +13,25 @@ import javafx.scene.text.Font;
 import javafx.stage.Stage;
 import javafx.scene.Scene;
 
+import java.util.concurrent.atomic.AtomicBoolean;
+
+
 // The game runner
 public class MazeRunner extends Application
 {
+    private AtomicBoolean lose = new AtomicBoolean(false);
     //3 game states 0 = running, 1 = win, 2 = lose
     int isWin = 0;
-
-
     Scene scene1, scene2, scene3;
+    double mX, mY;
+    boolean check = true;
+
+
     @Override
     public void start(Stage primaryStage) {
 
         // creating the maze instance
-        maze1 m = new maze1();
+        maze1 m = new maze1(primaryStage);
 
         // Layout1 (menu screen)
         // the title of the game
@@ -46,10 +52,6 @@ public class MazeRunner extends Application
         hb.setSpacing(10);
         hb.setAlignment(Pos.CENTER);
 
-        HBox buttons = new HBox();
-        buttons.getChildren().addAll(button1, button2);
-        buttons.setSpacing(10);
-        buttons.setAlignment(Pos.CENTER);
 
 
         button1.setStyle("-fx-background-color: #F39C12;\n" + "-fx-text-fill: white;\n"
@@ -69,6 +71,11 @@ public class MazeRunner extends Application
                 }
         );
 
+        HBox buttons = new HBox();
+        buttons.getChildren().add(button1);
+        buttons.getChildren().add(button2);
+        buttons.setSpacing(10);
+        buttons.setAlignment(Pos.CENTER);
 
         // creating the vbox and loading the content to it
         VBox vbox = new VBox(10, title , hb , button1);
@@ -106,7 +113,56 @@ public class MazeRunner extends Application
         root2.getChildren().addAll(m.getGrid(), hero, monster);
 
         //starts the movements of the monster
-        monster.move(1,m);
+        Thread thread = new Thread(new Runnable() {
+            public void run() {
+                while(lose.get() == false){
+                for (int i = 0; i < 10000; i++) {
+                    monster.move(1, m, scene3);
+
+                    if (check) {
+                        mX = monster.getPlayerX();
+                        mY = monster.getPlayerY();
+                        // System.out.println(mX);
+                        // System.out.println(mY);
+                        check = false;
+                    }
+
+                    //if the position of the monster this round is the same as last move then we skip the pause
+                    if (mX == monster.getPlayerX() && mY == monster.getPlayerY()) {
+                        //copy the monster position
+                        mX = monster.getPlayerX();
+                        mY = monster.getPlayerY();
+                        //System.out.println(mX);
+                        //System.out.println(mY);
+                        continue;
+                    } else {
+                        try {
+                            Thread.sleep(200);
+                        } catch (InterruptedException e) {
+                            e.printStackTrace();
+                        }
+                        //copy the monster position
+                        //X = (int)monster.getPlayerX();
+                        mY = monster.getPlayerY();
+                        //System.out.println(mX);
+                        //System.out.println(mY);
+                    }
+
+                    //Lose condition
+                    if (monster.getPlayerX() == m.getPlayer().getPlayerX() && monster.getPlayerY() == m.getPlayer().getPlayerY()) {
+                        //    isWin = 2;
+                        //    m.getStage().setScene(scene3);
+                        lose.set(true);
+                        System.out.println("YOU LOSE");
+                    }
+                }
+                }
+            }
+    });
+        thread.start();
+        if(lose.get() == true){
+            primaryStage.setScene(scene3);
+        }
 
         // creating the scene and adding the root group
         scene2 = new Scene(root2);
@@ -117,7 +173,7 @@ public class MazeRunner extends Application
             public void handle(KeyEvent event) {
                 switch (event.getCode()) {
                     case UP:
-                        hero.move(1 , m);
+                        hero.move(1 , m, scene3);
                         if(m.getPlayer().getPlayerX() == m.winX && m.getPlayer().getPlayerY() == m.winY ){
                             System.out.println("you won!");
                             status.setText("YOU WON!!!!");
@@ -125,28 +181,27 @@ public class MazeRunner extends Application
                         }
                         break;
                     case DOWN:
-                        hero.move(2 , m);
+                        hero.move(2 , m, scene3);
                         if(m.getPlayer().getPlayerX() == m.winX && m.getPlayer().getPlayerY() == m.winY ){
                             System.out.println("you won!");
                             status.setText("YOU WON!!!!");
                             primaryStage.setScene(scene3);
                         }break;
                     case LEFT:
-                        hero.move(3 , m);
+                        hero.move(3 , m, scene3);
                         if(m.getPlayer().getPlayerX() == m.winX && m.getPlayer().getPlayerY() == m.winY ){
                             System.out.println("you won!");
                             status.setText("YOU WON!!!!");
                             primaryStage.setScene(scene3);
                         }break;
                     case RIGHT:
-                        hero.move(4, m);
+                        hero.move(4, m, scene3);
                         if(m.getPlayer().getPlayerX() == m.winX && m.getPlayer().getPlayerY() == m.winY ){
                             System.out.println("you won!");
                             status.setText("YOU WON!!!!");
                             primaryStage.setScene(scene3);
                         }break;
                 }
-
             }
         });
 
@@ -159,7 +214,7 @@ public class MazeRunner extends Application
 
         VBox vbox2 = new VBox(10,status, buttons);
         vbox2.setStyle("-fx-padding: 10;" +
-                "-fx-background-color: #BDB76B;" +
+                "-fx-background-color: red;" +
                 "-fx-border-width: 2;" +
                 "-fx-border-insets: 5;" +
                 "-fx-border-radius: 5;" +
@@ -169,9 +224,10 @@ public class MazeRunner extends Application
         vbox2.setAlignment(Pos.CENTER);
         vbox2.setPrefWidth(350);
         vbox2.setPrefHeight(100);
-        //adding the image and the vbox to a group
+
+        // adding the image and the vbox to a group
         Group root3 = new Group();
-        root3.getChildren().addAll(mv1,vbox2);
+        root3.getChildren().addAll(mv1 , vbox2);
         scene3 = new Scene(root3, 700, 550);
 
         // setting the scene in the stage and the title

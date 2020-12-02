@@ -1,4 +1,6 @@
 import javafx.scene.layout.GridPane;
+import javafx.stage.Stage;
+
 import java.io.BufferedReader;
 import java.io.FileReader;
 import java.util.Scanner;
@@ -21,11 +23,15 @@ public abstract class maze implements board{
     // holds the maze data in array to be used when moving the user on the grid
     private int [][] data;
 
+    //the stage that the maze belongs to
+    private Stage primaryStage;
 
     // constructor
-    public maze( int width, int length) {
+    public maze( int width, int length, Stage ps) {
          this.width = width;
          this.length = length;
+         this.primaryStage = ps;
+
     }
 
     // the game characters
@@ -36,6 +42,11 @@ public abstract class maze implements board{
     public int getWidth() {
             return width;
         }
+
+    public Stage getStage() {
+        return primaryStage;
+    }
+    public void setStage(Stage p){primaryStage = p;}
     public int getLength() {
             return length;
         }

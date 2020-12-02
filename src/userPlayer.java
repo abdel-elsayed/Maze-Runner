@@ -1,3 +1,4 @@
+import javafx.scene.Scene;
 import javafx.scene.paint.Color;
 import javafx.scene.image.Image;
 import javafx.scene.paint.ImagePattern;
@@ -29,7 +30,7 @@ public class userPlayer extends Character {
         return Y;
     }
 
-    public void move(int dir, maze m){
+    public void move(int dir, maze m, Scene s){
 
         switch (dir){
             case 1:

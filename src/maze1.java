@@ -1,12 +1,13 @@
 import javafx.scene.layout.GridPane;
+import javafx.stage.Stage;
 
 public class maze1 extends maze {
     // tile size
     private int TILE_SIZE = 50;
 
     // constructor
-    public maze1(){
-      super(700, 550);
+    public maze1(Stage primary){
+      super(700, 550, primary);
       super.setPlayer(new userPlayer(50,50));
       super.setComputer(new computerPlayer(500,50));
     }

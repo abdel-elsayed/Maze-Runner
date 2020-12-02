@@ -1,3 +1,4 @@
+import javafx.scene.Scene;
 import javafx.scene.shape.Rectangle;
 
 /***
@@ -23,7 +24,7 @@ public abstract class Character extends Rectangle {
     }
 
     // abstract method moving the character
-    public abstract void move(int dir, maze m );
+    public abstract void move(int dir, maze m , Scene s);
 
     public abstract double getPlayerY();
 
