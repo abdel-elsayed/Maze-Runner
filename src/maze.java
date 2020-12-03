@@ -38,6 +38,10 @@ public abstract class maze implements board{
     // the game characters
     private Character player;
     private Character computer;
+    //additional game monsters
+    private Character computer2;
+    private Character computer3;
+    private Character computer4;
 
     // accessors & mutators
     public int getWidth() {
@@ -58,6 +62,16 @@ public abstract class maze implements board{
     public Character getComputer() { return computer; }
     public void setPlayer(Character p){player = p;}
     public void setComputer(Character c){computer = c;}
+
+    //added to set more monsters
+    public void setComputer2(Character c){computer2 = c;}
+    public void setComputer3(Character c){computer3 = c;}
+    public void setComputer4(Character c){computer4 = c;}
+
+    //added to get more monsters
+    public Character getComputer2() { return computer2; }
+    public Character getComputer3() { return computer3; }
+    public Character getComputer4() { return computer4; }
 
     public int [][] getDataArray(){
         return data;

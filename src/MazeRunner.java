@@ -107,14 +107,28 @@ public class MazeRunner extends Application
         // the computer's character
         Character monster = m.getComputer();
 
+
+        //added for additional monsters
+        Character monster2 = m.getComputer2();
+        Character monster3 = m.getComputer3();
+        Character monster4 = m.getComputer4();
+
+       // m.setComputer(new computerPlayer(600,210));
+
         // displays you won or you lose
         Label status = new Label();
         status.setFont(new Font("Arial", 14));
-        // adding the maze and the user to the root group
-        root2.getChildren().addAll(m.getGrid(), hero, monster);
+        // adding the maze and the user to the root group // now new monsters spawn in aswell
+        root2.getChildren().addAll(m.getGrid(), hero, monster, monster2, monster3, monster4);
 
         //starts the movements of the monster
         monster.move(1, m);
+
+        //added for addition monsters
+        monster2.move(1, m);
+        monster3.move(1, m);
+        monster4.move(1, m);
+
 
         // creating the scene and adding the root group
         scene2 = new Scene(root2);
@@ -131,7 +145,7 @@ public class MazeRunner extends Application
                             vbox2.setStyle(  " -fx-background-color: green;" + "-fx-border-color: green ;");
                             primaryStage.setScene(scene3);
                         }
-                        if(m.getComputer().getIsWin() == true) {
+                        if(m.getComputer().getIsWin() == true || m.getComputer2().getIsWin() == true || m.getComputer3().getIsWin() == true || m.getComputer4().getIsWin() == true) {
                             status.setText(" Hard Luck!!! " + hero.getName() + "\n YOU LOST!!!");
                             primaryStage.setScene(scene3);
                         }
@@ -145,7 +159,7 @@ public class MazeRunner extends Application
                             primaryStage.setScene(scene3);
 
                         }
-                        if(m.getComputer().getIsWin() == true) {
+                        if(m.getComputer().getIsWin() == true || m.getComputer2().getIsWin() == true || m.getComputer3().getIsWin() == true || m.getComputer4().getIsWin() == true) {
                             status.setText(" Hard Luck!!! " + hero.getName() + "\n YOU LOST!!!");
                             primaryStage.setScene(scene3);
                         }
@@ -160,7 +174,7 @@ public class MazeRunner extends Application
                             primaryStage.setScene(scene3);
 
                         }
-                        if(m.getComputer().getIsWin() == true) {
+                        if(m.getComputer().getIsWin() == true || m.getComputer2().getIsWin() == true || m.getComputer3().getIsWin() == true || m.getComputer4().getIsWin() == true) {
                             status.setText(" Hard Luck!!! " + hero.getName() + "\n YOU LOST!!!");
 
                             primaryStage.setScene(scene3);
@@ -176,7 +190,7 @@ public class MazeRunner extends Application
                             primaryStage.setScene(scene3);
 
                         }
-                        if(m.getComputer().getIsWin() == true) {
+                        if(m.getComputer().getIsWin() == true || m.getComputer2().getIsWin() == true || m.getComputer3().getIsWin() == true || m.getComputer4().getIsWin() == true) {
                             status.setText(" Hard Luck!!! " + hero.getName() + "\n YOU LOST!!!");
                             primaryStage.setScene(scene3);
                         }
