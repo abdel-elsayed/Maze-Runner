@@ -9,7 +9,7 @@ import java.util.Scanner;
 public abstract class maze implements board{
 
     //the x&y coordinates of the win tile
-    int winX, winY;
+    private int winX, winY;
 
     // the width of the maze
     private int width;
@@ -39,6 +39,7 @@ public abstract class maze implements board{
     private Character computer2;
     private Character computer3;
     private Character computer4;
+    private Character computer5;
 
     // accessors & mutators
     public int getWidth() {
@@ -53,18 +54,26 @@ public abstract class maze implements board{
     public void setLength(int l) {
             length = l;
         }
+    public int getWinX(){return winX;}
+    public int getWinY(){return winY;}
     public Character getPlayer(){  return player;}
     public Character getComputer() { return computer; }
     public void setPlayer(Character p){player = p;}
     public void setComputer(Character c){computer = c;}
+    public void setWinY(int w){winY = w;}
+    public void setWinX(int w){winX = w;}
     //added to set more monsters
     public void setComputer2(Character c){computer2 = c;}
     public void setComputer3(Character c){computer3 = c;}
     public void setComputer4(Character c){computer4 = c;}
+    public void setComputer5(Character c){computer5 = c;}
     //added to get more monsters
     public Character getComputer2() { return computer2; }
     public Character getComputer3() { return computer3; }
     public Character getComputer4() { return computer4; }
+    public Character getComputer5() { return computer5; }
+
+
 
     // the back-ground array of data to move players
     public int [][] getDataArray(){
@@ -85,7 +94,7 @@ public abstract class maze implements board{
 
         GridPane grid = new GridPane();
         tile tile;
-        String file = "..\\MazeRunner\\src\\";
+        String file = "/Users/abdelrahmanelsayed/Desktop/IdeaProjects/Maze-Runner/src/";
         file += fileName;
         try{
             // reading the data from file

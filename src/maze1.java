@@ -21,6 +21,7 @@ public class maze1 extends maze {
       super.setComputer2(new computerPlayer(600,210));
       super.setComputer3(new computerPlayer(900,210));
       super.setComputer4(new computerPlayer(450,210));
+      super.setComputer5(new computerPlayer(480,210));
     }
 
     /**

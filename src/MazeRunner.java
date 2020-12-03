@@ -109,20 +109,25 @@ public class MazeRunner extends Application
         //added for additional monsters
         Character monster2 = m.getComputer2();
         Character monster3 = m.getComputer3();
-
+        Character monster4 = m.getComputer4();
+        Character monster5 = m.getComputer5();
 
         // displays you won or you lose
         Label status = new Label();
-        status.setFont(new Font("Arial", 14));
-        // adding the maze and the user to the root group // now new monsters spawn in aswell
-        root2.getChildren().addAll(m.getGrid(), hero, monster, monster2, monster3);
+        status.setFont(new Font("Bradley Hand, cursive", 28));
+        status.setStyle("-fx-text-fill: green");
+        status.setAlignment(Pos.TOP_RIGHT);
+        status.setLayoutX(250);
 
-        //starts the movements of the monster
+        // adding the maze and the user to the root group // now new monsters spawn in aswell
+        root2.getChildren().addAll(m.getGrid(), hero, monster, monster2, monster3, monster4, monster5);
+
+        //starts the movements of the monsters
         monster.move(1, m);
-        //added for addition monsters
         monster2.move(1, m);
         monster3.move(1, m);
-
+        monster4.move(1, m);
+        monster5.move(1, m);
 
         // creating the scene and adding the root group
         scene2 = new Scene(root2);
@@ -134,9 +139,8 @@ public class MazeRunner extends Application
                 switch (event.getCode()) {
                     case UP:
                         hero.move(1 , m);
-                        if(m.getPlayer().getPlayerX() == m.winX && m.getPlayer().getPlayerY() == m.winY ){
+                        if(m.getPlayer().getPlayerX() == m.getWinX() && m.getPlayer().getPlayerY() == m.getWinY() ){
                             status.setText(" Congratulation!!! " + hero.getName() + "\n YOU WON!!!");
-                            vbox2.setStyle(  " -fx-background-color: green;" + "-fx-border-color: green ;");
                             primaryStage.setScene(scene3);
                         }
                         if(m.getComputer().getIsWin() == true || m.getComputer2().getIsWin() == true || m.getComputer3().getIsWin() == true || m.getComputer4().getIsWin() == true) {
@@ -147,9 +151,8 @@ public class MazeRunner extends Application
                         break;
                     case DOWN:
                         hero.move(2 , m);
-                        if(m.getPlayer().getPlayerX() == m.winX && m.getPlayer().getPlayerY() == m.winY ){
+                        if(m.getPlayer().getPlayerX() == m.getWinX() && m.getPlayer().getPlayerY() == m.getWinY()){
                             status.setText(" Congratulation!!! " + hero.getName() + "\n YOU WON!!!");
-                            vbox2.setStyle(  " -fx-background-color: green;" + "-fx-border-color: green ;");
                             primaryStage.setScene(scene3);
 
                         }
@@ -161,9 +164,8 @@ public class MazeRunner extends Application
                         break;
                     case LEFT:
                         hero.move(3 , m);
-                        if(m.getPlayer().getPlayerX() == m.winX && m.getPlayer().getPlayerY() == m.winY ){
+                        if(m.getPlayer().getPlayerX() == m.getWinX() && m.getPlayer().getPlayerY() == m.getWinY() ){
 
-                            vbox2.setStyle(  " -fx-background-color: green;" + "-fx-border-color: green ;");
                             status.setText(" Congratulation!!! " + hero.getName() + "\n YOU WON!!!");
                             primaryStage.setScene(scene3);
 
@@ -178,9 +180,8 @@ public class MazeRunner extends Application
                     case RIGHT:
                         hero.move(4, m);
                        // System.out.println(m.tele1X);
-                        if(m.getPlayer().getPlayerX() == m.winX && m.getPlayer().getPlayerY() == m.winY ){
+                        if(m.getPlayer().getPlayerX() == m.getWinX() && m.getPlayer().getPlayerY() == m.getWinY() ){
                             status.setText(" Congratulation!!! " + hero.getName() + "\n YOU WON!!!");
-                            vbox2.setStyle(  " -fx-background-color: green;" + "-fx-border-color: green ;");
                             primaryStage.setScene(scene3);
 
                         }
@@ -198,26 +199,14 @@ public class MazeRunner extends Application
 
         // --------- Layout3(GameOver) ------------
         // the background image
-        image1 = new Image("/gameOver.PNG");
+        image1 = new Image("/background2.PNG");
         ImageView mv1 = new ImageView(image1);
         mv1.setFitHeight(550);
         mv1.setFitWidth(700);
 
-        vbox2 = new VBox(10,status, buttons);
-        vbox2.setStyle("-fx-padding: 10;" +
-                "-fx-background-color: red;" +
-                "-fx-border-width: 2;" +
-                "-fx-border-insets: 5;" +
-                "-fx-border-radius: 5;" +
-                "-fx-border-color:#F0E68C ;");
-        vbox2.setLayoutX(200);
-        vbox2.setLayoutY(300);
-        vbox2.setAlignment(Pos.CENTER);
-        vbox2.setPrefWidth(250);
-
         // adding the image and the vbox to a group
         Group root3 = new Group();
-        root3.getChildren().addAll(mv1 , vbox2);
+        root3.getChildren().addAll(mv1 , status);
         scene3 = new Scene(root3, 700, 550);
 
         // setting the scene in the stage and the title

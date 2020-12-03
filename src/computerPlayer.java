@@ -1,3 +1,4 @@
+import javafx.application.Platform;
 import javafx.scene.image.Image;
 import javafx.scene.paint.Color;
 import javafx.scene.paint.ImagePattern;
@@ -36,7 +37,6 @@ public class computerPlayer extends Character {
     }
 
     /**
-     *
      * @return Y coordinate on grid
      */
     @Override
@@ -55,35 +55,37 @@ public class computerPlayer extends Character {
 
         Thread thread = new Thread(new Runnable() {
             public void run() {
-                for (int i = 0; i < 10000; i++) {
-                    int dir = (int) (Math.random() * (4 - 1 + 1) + 1);
-                    switch (dir) {
-                        case 1:
-                            if (m.getDataArray()[Y / m.getTileSize() - 1][X / m.getTileSize()] == 0) {
-                                Y -= m.getTileSize();
-                                relocate(X, Y);
-                            }
-                            break;
-                        case 2:
-                            if (m.getDataArray()[Y / m.getTileSize() + 1][X / m.getTileSize()] == 0) {
-                                Y += m.getTileSize();
-                                relocate(X, Y);
-                            }
-                            break;
-                        case 3:
-                            if (m.getDataArray()[Y / m.getTileSize()][X / m.getTileSize() - 1] == 0) {
-                                X -= m.getTileSize();
-                                relocate(X, Y);
-                            }
-                            break;
-                        case 4:
-                            if (m.getDataArray()[Y / m.getTileSize()][X / m.getTileSize() + 1] == 0) {
-                                X += m.getTileSize();
-                                relocate(X, Y);
-                            }
-                            break;
-                    }
-
+                while(!getIsWin()) {
+                    Platform.runLater(() ->
+                            {
+                                int dir = (int) (Math.random() * (4 - 1 + 1) + 1);
+                                switch (dir) {
+                                    case 1:
+                                        if (m.getDataArray()[Y / m.getTileSize() - 1][X / m.getTileSize()] == 0) {
+                                            Y -= m.getTileSize();
+                                            relocate(X, Y);
+                                        }
+                                        break;
+                                    case 2:
+                                        if (m.getDataArray()[Y / m.getTileSize() + 1][X / m.getTileSize()] == 0) {
+                                            Y += m.getTileSize();
+                                            relocate(X, Y);
+                                        }
+                                        break;
+                                    case 3:
+                                        if (m.getDataArray()[Y / m.getTileSize()][X / m.getTileSize() - 1] == 0) {
+                                            X -= m.getTileSize();
+                                            relocate(X, Y);
+                                        }
+                                        break;
+                                    case 4:
+                                        if (m.getDataArray()[Y / m.getTileSize()][X / m.getTileSize() + 1] == 0) {
+                                            X += m.getTileSize();
+                                            relocate(X, Y);
+                                        }
+                                        break;
+                                }
+                            });
                     //only runs first time to set temp variables
                     if (check) {
                         mX = getPlayerX();
@@ -94,7 +96,7 @@ public class computerPlayer extends Character {
 
                         //Delay while user types name
                         try {
-                            Thread.sleep(2000);
+                            Thread.sleep(3000);
                         } catch (InterruptedException e) {
                             e.printStackTrace();
                         }
