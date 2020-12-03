@@ -1,35 +1,41 @@
-import javafx.scene.Scene;
 import javafx.scene.shape.Rectangle;
 
 /***
- * abstract class that extends triangle and represents the characters in the game
- * NOTE: NOT USED YET IN MAIN
+ * abstract class that extends Rectangle and represents the characters in the game
  */
 public abstract class Character extends Rectangle {
     private String name;
     private boolean isWin;
-    private int X;
-    private int Y;
 
+    // constructor
+    public  Character( int x, int y) {
+        isWin = false;
+    }
+
+    // accessors and mutators
     public void setName(String n){
         name = n;
     }
     public String getName(){return name;}
-
-
-    public  Character( int x, int y) {
-          isWin = false;
-          X = x;
-          Y = y;
-    }
-
     public void setIsWin(boolean w){isWin = w;}
     public boolean getIsWin(){return isWin;}
 
-    // abstract method moving the character
+    /**
+     * abstract function to move the character on maze
+     * @param dir
+     * @param m
+     */
     public abstract void move(int dir, maze m);
 
+    /**
+     * get the Y coordinate of the character
+     * @return Y coordinate on grid
+     */
     public abstract double getPlayerY();
 
+    /**
+     * get the X coordinate of the character
+     * @return X coordinate on grid
+     */
     public abstract double getPlayerX();
 }

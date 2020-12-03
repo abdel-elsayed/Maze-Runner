@@ -2,13 +2,17 @@ import javafx.scene.image.Image;
 import javafx.scene.paint.Color;
 import javafx.scene.paint.ImagePattern;
 
-
+/**
+ * Represents the computer character in the game
+ * Extends the abstract class character
+ */
 public class computerPlayer extends Character {
-    int X,Y;
-    double mX, mY;
-    boolean check = true;
 
-    // constructor
+    private int X,Y;
+    private double mX, mY;
+    private boolean check = true;
+
+    // parametrized constructor
     public computerPlayer(int x, int y){
         super(x,y);
         setWidth(30);
@@ -21,20 +25,32 @@ public class computerPlayer extends Character {
         Image img = new Image("/monster.PNG");
         setFill(new ImagePattern(img));
     }
+
+    /**
+     *
+     * @return X coordinate on grid
+     */
+    @Override
     public double getPlayerX(){
         return X;
     }
+
+    /**
+     *
+     * @return Y coordinate on grid
+     */
+    @Override
     public double getPlayerY(){
         return Y;
     }
 
-
     /**
      * This function implements the parents class abstract move function.
-     * Creates a thread for the monster to constantly run in the background
+     * Creates a thread for the monster to constantly generates random movement in the background
      * @param dir direction of movement of the monster
      * @param m the maze that the monster is moving in
      */
+    @Override
     public void move(int dir, maze m) {
 
         Thread thread = new Thread(new Runnable() {
@@ -116,5 +132,4 @@ public class computerPlayer extends Character {
         thread.start();
 
     }
-
 }

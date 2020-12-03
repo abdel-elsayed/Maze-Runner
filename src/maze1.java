@@ -1,8 +1,15 @@
 import javafx.scene.layout.GridPane;
 
+/**
+ * Inherits from the parent maze class
+ * represents the first level of the maze
+ */
 public class maze1 extends maze {
     // tile size
     private int TILE_SIZE = 30;
+
+    // the grid for the maze
+    private GridPane grid = super.initializeLevel("level1.txt", TILE_SIZE);;
 
     // constructor
     public maze1(){
@@ -16,13 +23,16 @@ public class maze1 extends maze {
       super.setComputer4(new computerPlayer(450,210));
     }
 
+    /**
+     *
+     * @return the size of the maze tiles
+     */
     @Override
     public int getTileSize(){
         return TILE_SIZE;
     }
 
-    private GridPane grid = super.initializeLevel("level1.txt", TILE_SIZE);;
-
+    // returns the maze grid
     public GridPane getGrid(){
         return grid;
     }

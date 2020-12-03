@@ -2,10 +2,9 @@ import javafx.scene.layout.GridPane;
 import java.io.BufferedReader;
 import java.io.FileReader;
 import java.util.Scanner;
-
-
 /***
  * this is an abstract class that implements the interface board
+ * and creates the maze board
  */
 public abstract class maze implements board{
 
@@ -27,14 +26,12 @@ public abstract class maze implements board{
     public int tele2X;
     public int tele2Y;
 
-
     // constructor
     public maze( int width, int length) {
          this.width = width;
          this.length = length;
 
     }
-
     // the game characters
     private Character player;
     private Character computer;
@@ -47,8 +44,6 @@ public abstract class maze implements board{
     public int getWidth() {
             return width;
         }
-
-
     public int getLength() {
             return length;
         }
@@ -62,33 +57,38 @@ public abstract class maze implements board{
     public Character getComputer() { return computer; }
     public void setPlayer(Character p){player = p;}
     public void setComputer(Character c){computer = c;}
-
     //added to set more monsters
     public void setComputer2(Character c){computer2 = c;}
     public void setComputer3(Character c){computer3 = c;}
     public void setComputer4(Character c){computer4 = c;}
-
     //added to get more monsters
     public Character getComputer2() { return computer2; }
     public Character getComputer3() { return computer3; }
     public Character getComputer4() { return computer4; }
 
+    // the back-ground array of data to move players
     public int [][] getDataArray(){
         return data;
     }
 
+    // abstract function
     public abstract int getTileSize();
 
-    // the interface methods implemented to create the gridPane for every maze of different level
-    // takes the file name for the maze design
+    /**
+     * implements the parent's class method and creates the grid of the maze from a text file input
+     * @param fileName the file that has the design of the maze
+     * @param tileSize the size of each tile that sets the size of the grid
+     * @return a grid with the maze
+     */
     @Override
     public GridPane initializeLevel(String fileName, int tileSize) {
 
         GridPane grid = new GridPane();
         tile tile;
-        String file = "\\C:\\Users\\Haysus\\IdeaProjects\\Maze-Runner\\src\\";
+        String file = "..\\MazeRunner\\src\\";
         file += fileName;
         try{
+            // reading the data from file
             BufferedReader reader = new BufferedReader(new FileReader(file));
             Scanner sc = new Scanner(reader);
             int rows =  Integer.parseInt(sc.nextLine());
@@ -99,15 +99,15 @@ public abstract class maze implements board{
                     String[] line = sc.nextLine().trim().split("");
                     for (int j = 0; j < line.length; j++) {
                         data[i][j] = Integer.parseInt(line[j]);
-                        if(data[i][j] == 2)
+                        if(data[i][j] == 2) // if the tile is exit
                             {
                             winY = i*tileSize;
                             winX = j*tileSize;
-                        }else if(data[i][j] == 5)
+                        }else if(data[i][j] == 5) // if tile is the teleporting 1 tile
                         {
                             tele1X = j*tileSize;
                             tele1Y = i*tileSize;
-                        }else if(data[i][j] == 6)
+                        }else if(data[i][j] == 6) // if tile is the teleporting 2 tile
                         {
                             tele2X = j*tileSize;
                             tele2Y = i*tileSize;
