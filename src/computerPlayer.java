@@ -28,7 +28,6 @@ public class computerPlayer extends Character {
     }
 
     /**
-     *
      * @return X coordinate on grid
      */
     @Override
@@ -36,7 +35,7 @@ public class computerPlayer extends Character {
         return X;
     }
 
-    /**
+    /**s
      * @return Y coordinate on grid
      */
     @Override

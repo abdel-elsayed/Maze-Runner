@@ -188,57 +188,81 @@ public class MazeRunner extends Application
             public void handle(KeyEvent event) {
                 switch (event.getCode()) {
                     case UP:
-                        m1.getPlayer().move(1 , m1);
-                        if(m1.getPlayer().getPlayerX() == m1.getWinX() && m1.getPlayer().getPlayerY() == m1.getWinY() ){
+                        m1.getPlayer().move(1, m1);
+                        if (m1.getPlayer().getPlayerX() == m1.getWinX() && m1.getPlayer().getPlayerY() == m1.getWinY()) {
                             status.setText(" Congratulation!!! " + m1.getPlayer().getName() + "\n YOU WON!!!");
                             primaryStage.setScene(scene4);
                         }
-                        if(m1.getComputer().getIsWin() == true || m1.getComputer2().getIsWin() == true || m1.getComputer3().getIsWin() == true || m1.getComputer4().getIsWin() == true || m1.getComputer5().getIsWin() == true) {
+                        if (m1.getComputer().getIsWin() == true || m1.getComputer2().getIsWin() == true || m1.getComputer3().getIsWin() == true || m1.getComputer4().getIsWin() == true || m1.getComputer5().getIsWin() == true) {
                             status.setText(" Hard Luck!!! " + m1.getPlayer().getName() + "\n YOU LOST!!!");
                             primaryStage.setScene(scene4);
                         }
-                       // System.out.println(m.getComputer().getIsWin());
+                        // System.out.println(m.getComputer().getIsWin());
+                        if (timeSeconds == 0) {
+                            m1.getComputer().setIsWin(true);
+                            m1.getComputer2().setIsWin(true);
+                            m1.getComputer3().setIsWin(true);
+                            m1.getComputer4().setIsWin(true);
+                            status.setText(" Hard Luck!!! " + m1.getPlayer().getName() + "\n YOU LOST!!!");
+                            primaryStage.setScene(scene4);
+                        }
                         break;
                     case DOWN:
-                        m1.getPlayer().move(2 , m1);
-                        if(m1.getPlayer().getPlayerX() == m1.getWinX() && m1.getPlayer().getPlayerY() == m1.getWinY()){
+                        m1.getPlayer().move(2, m1);
+                        if (m1.getPlayer().getPlayerX() == m1.getWinX() && m1.getPlayer().getPlayerY() == m1.getWinY()) {
                             status.setText(" Congratulation!!! " + m1.getPlayer().getName() + "\n YOU WON!!!");
                             primaryStage.setScene(scene4);
 
                         }
-                        if(m1.getComputer().getIsWin() == true || m1.getComputer2().getIsWin() == true || m1.getComputer3().getIsWin() == true || m1.getComputer4().getIsWin() == true || m1.getComputer5().getIsWin() == true) {
+                        if (m1.getComputer().getIsWin() == true || m1.getComputer2().getIsWin() == true || m1.getComputer3().getIsWin() == true || m1.getComputer4().getIsWin() == true || m1.getComputer5().getIsWin() == true) {
                             status.setText(" Hard Luck!!! " + m1.getPlayer().getName() + "\n YOU LOST!!!");
                             primaryStage.setScene(scene4);
                         }
                         //System.out.println(m.getComputer().getIsWin());
+                        if (timeSeconds == 0) {
+                            m1.getComputer().setIsWin(true);
+                            m1.getComputer2().setIsWin(true);
+                            m1.getComputer3().setIsWin(true);
+                            m1.getComputer4().setIsWin(true);
+                            status.setText(" Hard Luck!!! " + m1.getPlayer().getName() + "\n YOU LOST!!!");
+                            primaryStage.setScene(scene4);
+                        }
                         break;
                     case LEFT:
-                        m1.getPlayer().move(3 , m1);
-                        if(m1.getPlayer().getPlayerX() == m1.getWinX() && m1.getPlayer().getPlayerY() == m1.getWinY() ){
+                        m1.getPlayer().move(3, m1);
+                        if (m1.getPlayer().getPlayerX() == m1.getWinX() && m1.getPlayer().getPlayerY() == m1.getWinY()) {
 
                             status.setText(" Congratulation!!! " + m1.getPlayer().getName() + "\n YOU WON!!!");
                             primaryStage.setScene(scene4);
 
                         }
-                        if(m1.getComputer().getIsWin() == true || m1.getComputer2().getIsWin() == true || m1.getComputer3().getIsWin() == true || m1.getComputer4().getIsWin() == true || m1.getComputer5().getIsWin() == true) {
+                        if (m1.getComputer().getIsWin() == true || m1.getComputer2().getIsWin() == true || m1.getComputer3().getIsWin() == true || m1.getComputer4().getIsWin() == true || m1.getComputer5().getIsWin() == true) {
                             status.setText(" Hard Luck!!! " + m1.getPlayer().getName() + "\n YOU LOST!!!");
                             primaryStage.setScene(scene4);
                         }
                         //System.out.println(m.getComputer().getIsWin());
+                        if (timeSeconds == 0) {
+                            m1.getComputer().setIsWin(true);
+                            m1.getComputer2().setIsWin(true);
+                            m1.getComputer3().setIsWin(true);
+                            m1.getComputer4().setIsWin(true);
+                            status.setText(" Hard Luck!!! " + m1.getPlayer().getName() + "\n YOU LOST!!!");
+                            primaryStage.setScene(scene4);
+                        }
                         break;
                     case RIGHT:
                         m1.getPlayer().move(4, m1);
-                       // System.out.println(m.tele1X);
-                        if(m1.getPlayer().getPlayerX() == m1.getWinX() && m1.getPlayer().getPlayerY() == m1.getWinY() ){
+                        // System.out.println(m.tele1X);
+                        if (m1.getPlayer().getPlayerX() == m1.getWinX() && m1.getPlayer().getPlayerY() == m1.getWinY()) {
                             status.setText(" Congratulation!!! " + m1.getPlayer().getName() + "\n YOU WON!!!");
                             primaryStage.setScene(scene4);
 
                         }
-                        if(m1.getComputer().getIsWin() == true || m1.getComputer2().getIsWin() == true || m1.getComputer3().getIsWin() == true || m1.getComputer4().getIsWin() == true  || m1.getComputer5().getIsWin() == true) {
+                        if (m1.getComputer().getIsWin() == true || m1.getComputer2().getIsWin() == true || m1.getComputer3().getIsWin() == true || m1.getComputer4().getIsWin() == true || m1.getComputer5().getIsWin() == true) {
                             status.setText(" Hard Luck!!! " + m1.getPlayer().getName() + "\n YOU LOST!!!");
                             primaryStage.setScene(scene4);
                         }
-                        if(timeSeconds == 0){
+                        if (timeSeconds == 0) {
                             m1.getComputer().setIsWin(true);
                             m1.getComputer2().setIsWin(true);
                             m1.getComputer3().setIsWin(true);
@@ -276,7 +300,14 @@ public class MazeRunner extends Application
                         {  status.setText(" Hard Luck!!! " + m2.getPlayer().getName() + "\n YOU LOST!!!");
                             primaryStage.setScene(scene4);
                         }
-                        // System.out.println(m.getComputer().getIsWin());
+                        if (timeSeconds == 0) {
+                        m1.getComputer().setIsWin(true);
+                        m1.getComputer2().setIsWin(true);
+                        m1.getComputer3().setIsWin(true);
+                        m1.getComputer4().setIsWin(true);
+                        status.setText(" Hard Luck!!! " + m1.getPlayer().getName() + "\n YOU LOST!!!");
+                        primaryStage.setScene(scene4);
+                    }
                         break;
                     case DOWN:
                         m2.getPlayer().move(2 , m2);
@@ -290,7 +321,14 @@ public class MazeRunner extends Application
                             status.setText(" Hard Luck!!! " + m2.getPlayer().getName() + "\n YOU LOST!!!");
                             primaryStage.setScene(scene4);
                         }
-                        //System.out.println(m.getComputer().getIsWin());
+                        if (timeSeconds == 0) {
+                            m1.getComputer().setIsWin(true);
+                            m1.getComputer2().setIsWin(true);
+                            m1.getComputer3().setIsWin(true);
+                            m1.getComputer4().setIsWin(true);
+                            status.setText(" Hard Luck!!! " + m1.getPlayer().getName() + "\n YOU LOST!!!");
+                            primaryStage.setScene(scene4);
+                        }
                         break;
                     case LEFT:
                         m2.getPlayer().move(3 , m2);
@@ -305,7 +343,14 @@ public class MazeRunner extends Application
                             status.setText(" Hard Luck!!! " + m2.getPlayer().getName() + "\n YOU LOST!!!");
                             primaryStage.setScene(scene4);
                         }
-                        //System.out.println(m.getComputer().getIsWin());
+                        if (timeSeconds == 0) {
+                            m1.getComputer().setIsWin(true);
+                            m1.getComputer2().setIsWin(true);
+                            m1.getComputer3().setIsWin(true);
+                            m1.getComputer4().setIsWin(true);
+                            status.setText(" Hard Luck!!! " + m1.getPlayer().getName() + "\n YOU LOST!!!");
+                            primaryStage.setScene(scene4);
+                        }
                         break;
                     case RIGHT:
                         m2.getPlayer().move(4, m2);

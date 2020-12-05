@@ -2,6 +2,7 @@ import javafx.scene.layout.GridPane;
 import java.io.BufferedReader;
 import java.io.FileReader;
 import java.util.Scanner;
+
 /***
  * this is an abstract class that implements the interface board
  * and creates the maze board
@@ -13,7 +14,6 @@ public abstract class maze implements board{
 
     // the width of the maze
     private int width;
-
     // the length of the maze
     private int length;
 
@@ -27,9 +27,6 @@ public abstract class maze implements board{
     public int tele2X;
     public int tele2Y;
 
-    public maze(){
-
-    }
 
     // constructor
     public maze( int width, int length, int diff, String filename, int tileSize) {
