@@ -1,11 +1,11 @@
 import javafx.scene.image.Image;
-import javafx.scene.layout.GridPane;
 
 /**
  * Inherits from the parent maze class
- * represents the first level of the maze
+ * represents the second level of the maze
  */
 public class maze2 extends maze {
+
     // tile size
     private int TILE_SIZE = 30;
 

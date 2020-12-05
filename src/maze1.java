@@ -1,4 +1,5 @@
 import javafx.scene.image.Image;
+
 /**
  * Inherits from the parent maze class
  * represents the first level of the maze
