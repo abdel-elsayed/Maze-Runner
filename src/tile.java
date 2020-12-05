@@ -9,8 +9,9 @@ import javafx.scene.paint.ImagePattern;
  */
 public class tile extends Rectangle {
 
+
     // constructor
-    public tile(int color, int t) {
+    public tile(int diff, int color, int t) {
 
         // setting the dimensions of the tile
         setWidth((double)t);
@@ -18,26 +19,45 @@ public class tile extends Rectangle {
 
         //Fill tile color
         //path
-        if(color == 0){
-            setFill(Color.valueOf("#feb"));
+        if(diff == 0) {
+            if (color == 0) {
+                setFill(Color.valueOf("#feb"));
+            }
+            //walls
+            else if (color == 1) {
+                Image img = new Image("/grass.jpg");
+                setFill(new ImagePattern(img));
+            }
+            //maze exit
+            else if (color == 2) {
+                setFill(Color.valueOf("#6495ED"));
+            }
+            //teleporting tile
+            else if (color == 5 || color == 6) {
+                Image img = new Image("/teleport1.png");
+                setFill(new ImagePattern(img));
+            }
         }
-        //walls
-        else if (color == 1) {
-            setFill(Color.valueOf("#582"));
-            Image img = new Image("/grass.jpg");
-            setFill(new ImagePattern(img));
-        }
-        //maze exit
-        else if (color == 2){
-            setFill(Color.valueOf("#6495ED"));
-        }
-        //teleporting tile
-        else if (color == 5 || color == 6){
-            setFill(Color.valueOf("#7F00FF"));
-            Image img = new Image("/teleport1.png");
-            setFill(new ImagePattern(img));
-        }
+        else if(diff == 1){
 
+            if (color == 0) {
+                setFill(Color.valueOf("#383838"));
+            }
+            //walls
+            else if (color == 1) {
+                Image img = new Image("/lava.jpg");
+                setFill(new ImagePattern(img));
+            }
+            //maze exit
+            else if (color == 2) {
+                setFill(Color.valueOf("#6495ED"));
+            }
+            //teleporting tile
+            else if (color == 5 || color == 6) {
+                Image img = new Image("/teleporting2.jpg");
+                setFill(new ImagePattern(img));
+            }
+        }
     }
 
 }
