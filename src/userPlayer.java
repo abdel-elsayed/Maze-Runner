@@ -10,7 +10,7 @@ public class userPlayer extends Character {
     private int X,Y;
 
     // constructor
-    public userPlayer(int x, int y){
+    public userPlayer(Image img, int x, int y){
         super(x,y);
         setWidth(30);
         setHeight(30);
@@ -19,7 +19,7 @@ public class userPlayer extends Character {
         setX(X);
         setY(Y);
         setFill(Color.BLACK);
-        Image img = new Image("/player.PNG");
+        //Image img = new Image("/player.PNG");
         setFill(new ImagePattern(img));
     }
 
