@@ -7,7 +7,7 @@ This JavaFX Maze-Runner game is a class project from CSC330 Object Oriented Prog
 * [Warren Simpson](https://github.com/Warren28)
 
 ## UML-Diagram
-![](https://github.com/abdel-elsayed/Maze-Runner/blob/main/MazeRunnerUML%20(1).pdf)  
+![](https://github.com/abdel-elsayed/Maze-Runner/UML)  
 
 ## Demo
 
