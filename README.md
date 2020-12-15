@@ -1,5 +1,5 @@
 # Maze-Runner
-This JavaFX Maze-Runner game is a class project from CSC330 Object Oriented Programming at CUNY-College of Staten Island.
+JavaFX game is a class project from CSC330 Object Oriented Programming at CUNY-College of Staten Island.
 
 # Authors
 * [Abdelrahman Elsayed](https://github.com/abdel-elsayed)
