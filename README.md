@@ -9,6 +9,7 @@ JavaFX game is a class project from CSC330 Object Oriented Programming at CUNY-C
 * [Warren Simpson](https://github.com/Warren28)
 
 ## Demo
+[![The-Maze-video](https://img.youtube.com/vi/5SRHJDLT8e4/0.jpg)](https://www.youtube.com/watch?v=5SRHJDLT8e4)
 
 ### Main Menu:
 ![](https://github.com/abdel-elsayed/Maze-Runner/blob/main/menu.png)      
