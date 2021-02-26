@@ -11,16 +11,16 @@ JavaFX game is a class project from CSC330 Object Oriented Programming at CUNY-C
 
 
 ### Main Menu:
-![](https://github.com/abdel-elsayed/Maze-Runner/blob/main/menu.png)      
+<img src="https://github.com/abdel-elsayed/Maze-Runner/blob/main/menu.png" width=550>
 
 ### Level: easy
-![](https://github.com/abdel-elsayed/Maze-Runner/blob/main/easy1.gif)      
+<img src="https://github.com/abdel-elsayed/Maze-Runner/blob/main/easy1.gif" width=700>
 
-### Level: hard
-![](https://github.com/abdel-elsayed/Maze-Runner/blob/main/hard.gif)      
+### Level: hard     
+<img src="https://github.com/abdel-elsayed/Maze-Runner/blob/main/hard.gif" width=700>
 
-### End
-![](https://github.com/abdel-elsayed/Maze-Runner/blob/main/gameOver.png)      
+### End  
+<img src="https://github.com/abdel-elsayed/Maze-Runner/blob/main/gameOver.png" width=550>
 
 ## UML-Diagram
 ![](https://github.com/abdel-elsayed/Maze-Runner/blob/main/UML.png)  
